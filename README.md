@@ -1,1 +1,2 @@
-# LyThuyetDoThi2
+# LyThuyetDoThi
+Đồ án Lý thuyết đồ thị
