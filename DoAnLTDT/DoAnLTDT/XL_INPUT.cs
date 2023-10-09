@@ -15,10 +15,10 @@ namespace DoAnLTDT
         public static int n;
         // ma tran danh sach ke co trong so
         public static int[,] data;
-        // ma tran lien ke ss
+        // ma tran lien ke
         public static int[,] data_ke;
 
-       
+
         //Kiem tra file co ton tai hay khong va doc file
         public static bool KiemTraFile(string filename)
         {
@@ -30,14 +30,14 @@ namespace DoAnLTDT
             }
             string[] lines = File.ReadAllLines(filename);
             n = int.Parse(lines[0]);
-           
+
 
             DATA();
 
-            for (int i = 1; i <= n; i++)
+            for (int i = 1; i <= n + 1; i++)
             {
                 string t = lines[i] + " ";
-               
+
                 string[] Mang = new string[n + 1];
                 Mang = t.Split(' ');
                 int k = Convert.ToInt32(Mang[0]);
@@ -58,9 +58,9 @@ namespace DoAnLTDT
                     Console.Write(data[m, r] + " ");
                 }
                 Console.WriteLine();
-                
+
             }
-          
+
 
             return true;
         }
@@ -77,7 +77,7 @@ namespace DoAnLTDT
                     data[i, j] = 0;
                     data_ke[i, j] = 0;
                 }
-             
+
             }
 
         }
@@ -95,25 +95,32 @@ namespace DoAnLTDT
         // So canh
         public static int Socanh_DT()
         {
+            int KQ=0 ;
+            
             int dem = 0;
-            for(int i = 0;i<=n;i++)
-            {
-                for(int j=0; j<=n;j++)
-                {
-                    if (data_ke[i,j]!=0)
-                    {
-                        dem += data_ke[i, j];
-                    }
-                }
-            }
-            if(Vector()==true)
-            {
-                return dem / 2;
 
+            if (Vector() == true)
+            {
+                for (int i = 0; i <= n; i++)
+                {
+                    for (int j = dem; j <= n; j++)
+                    {
+                        KQ += data_ke[i, j];
+                    }
+                    dem += 1;
+                }
+                return KQ;
             }
             else
             {
-                return dem;
+                for (int i = 0; i <= n; i++)
+                {
+                    for (int j = 0; j <= n; j++)
+                    {
+                        KQ += data_ke[i, j];
+                    }
+                }
+                return KQ;
             }
         }
         // dem canh boi va khuyen
@@ -122,36 +129,53 @@ namespace DoAnLTDT
             int[] KQ = new int[2];
             KQ[0] = 0;
             KQ[1] = 0;
-            for (int i = 0; i <= n; i++)
-            {
-                for (int j = 0; j <= n; j++)
-                {   
-                    if (data_ke[i,j]==2)
-                    {
-                        KQ[0] += 1;
-                    }
-                    if (data_ke[i,j]!=0 && i==j)
-                    {
-                        KQ[1] += data_ke[i, j];
-                    }
-                }
-            }
+            int dem = 0;
+            
             if (Vector() == true)
             {
-                KQ[0] /= 2;
+                for (int i = 0; i <= n; i++)
+                {
+                    for (int j = dem; j <= n; j++)
+                    {
+                        if (data_ke[i, j] == 2)
+                        {
+                            KQ[0] += 1;
+                        }
+                        if (data_ke[i, j] != 0 && i == j)
+                        {
+                            KQ[1] += data_ke[i, j];
+                        }
+                    }
+                    dem += 1;
+                }
+              
                 Console.WriteLine($"e. So luong cap dinh xuat hien canh boi: {KQ[0]}");
                 Console.WriteLine($"   So luong cap dinh xuat hien canh khuyen: {KQ[1]}");
 
             }
             else
             {
+                for (int i = 0; i <= n; i++)
+                {
+                    for (int j = 0; j <= n; j++)
+                    {
+                        if (data_ke[i, j] == 2)
+                        {
+                            KQ[0] += 1;
+                        }
+                        if (data_ke[i, j] != 0 && i == j)
+                        {
+                            KQ[1] += data_ke[i, j];
+                        }
+                    }
+                }
                 Console.WriteLine($"e. So luong cap dinh xuat hien canh boi: {KQ[0]}");
                 Console.WriteLine($"   So luong cap dinh xuat hien canh khuyen: {KQ[1]}");
             }
 
         }
 
-       // BAC CUA DINH
+        // BAC CUA DINH
         public static int[,] Bac_Dinh()
         {
             int[,] KQ = new int[2, n + 1];
@@ -186,7 +210,7 @@ namespace DoAnLTDT
         // MA TRAN KE
         public static void Ma_tran_ke()
         {
-          
+
             for (int m = 0; m <= n; m++)
             {
                 for (int r = 0; r <= n; r++)
@@ -204,26 +228,26 @@ namespace DoAnLTDT
         // DO THI VO HUONG ?
         public static Boolean Vector()
         {
-            
-       
-            for(int i=0;i<=n;i++)
+
+
+            for (int i = 0; i <= n; i++)
             {
-                for(int j=1;j<=n;j++)
+                for (int j = 1; j <= n; j++)
                 {
-                    if (data_ke[i,j] != data_ke[j,i])
+                    if (data_ke[i, j] != data_ke[j, i])
                     {
                         return false;
                     }
                 }
             }
             return true;
-                 
+
         }
     }
 
     class XL_YC_DA
     {
-            //YÊU CẦU 1: PHÂN TÍCH THÔNG TIN ĐỒ THỊ
+        //YÊU CẦU 1: PHÂN TÍCH THÔNG TIN ĐỒ THỊ
         public static void YC1()
         {
             Console.WriteLine("YEU CAU 1: PHAN TICH THONG TIN DO THI:");
@@ -232,17 +256,17 @@ namespace DoAnLTDT
 
 
             Console.WriteLine("b. xac dinh tinh co huong cua do thi:");
-          
-            if(XL_INPUT.Vector()==true)
+
+            if (XL_INPUT.Vector() == true)
             {
                 Console.WriteLine("La do thi vo huong");
             }
-            else 
-            { 
+            else
+            {
                 Console.WriteLine("La do thi co  huong");
             }
 
-            Console.WriteLine($"c. So dinh cua do thi {XL_INPUT.Doc_So_Dinh()+1} ");
+            Console.WriteLine($"c. So dinh cua do thi {XL_INPUT.Doc_So_Dinh() + 1} ");
             Console.WriteLine($"d. So canh cua do thi {XL_INPUT.Socanh_DT()}");
             XL_INPUT.Dem_Boi_Khuyen();
 
@@ -252,6 +276,6 @@ namespace DoAnLTDT
     }
 }
 
-        
+
 
 
