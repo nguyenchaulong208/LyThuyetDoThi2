@@ -178,35 +178,97 @@ namespace DoAnLTDT
         // BAC CUA DINH
         public static int[,] Bac_Dinh()
         {
-            int[,] KQ = new int[2, n + 1];
+            int[,] kq = new int[2, n + 1];
+            int dem = 0;
             for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < n + 1; j++)
                 {
-                    KQ[i, j] = 0;
+                    kq[i, j] = 0;
                 }
             }
-
-            for (int i = 0; i <= n; i++)
+            if (Vector() == true)
             {
-                for (int j = 0; j <= n; j++)
+                for (int i = 0; i <= n; i++)
                 {
-                    if (data[i, j] != 0 && i != j)
+                    for (int j = dem; j <= n; j++)
                     {
-                        KQ[0, i] += 1;
-                        KQ[1, j] += 1;
+                        if (data_ke[i, j] != 0)
+                        {
+                            kq[0, j] += data_ke[i, j];
+                        }
                     }
-                    if (data[i, j] != 0 && i == j)
+                    dem += 1;
+                }
+                return kq;
+            }
+            else
+            {
+                for (int i = 0; i <= n; i++)
+                {
+                    for (int j = 0; j <= n; j++)
                     {
-                        KQ[0, i] += 1;
-                        KQ[1, j] += 1;
-
+                        if (data_ke[i,j] != 0)
+                        {
+                            kq[0,i] += data_ke[i,j];
+                            kq[1,j] += data_ke[i,j];
+                        }
                     }
+                }
+                return kq;
+            }
+            
 
+        }
+
+        //DINH TREO DINH CO LAP
+        public static void Dinh_T_CL()
+        {
+            int dinh_treo = 0, dinh_co_lap = 0;
+            int[,] BacDinh = Bac_Dinh();
+            for(int i=0; i<=n; i++)
+            {
+                if (BacDinh[0, i] + BacDinh[1,i]==1)
+                {
+                    dinh_treo += 1;
+                }
+
+                if (BacDinh[0, i] + BacDinh[1, i] == 0)
+                {
+                    dinh_co_lap += 1;
                 }
             }
-            return KQ;
+            Console.WriteLine("So dinh treo " + dinh_treo);
+            Console.WriteLine("So dinh co lap " + dinh_co_lap);
         }
+
+        // BAC TUNG DINH
+        public static void Bac_tung_dinh()
+        {
+            int[,] BacDinh = Bac_Dinh();
+            if(Vector()==true)
+            {
+                Console.WriteLine("Bac tung dinh la " );
+                for (int i = 0; i <= n; i++)
+                {
+                    Console.Write(i+" " + $"({BacDinh[0,i]+ BacDinh[1, i]}) ");
+
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("(Bac vao - Bac ra)  tung dinh la ");
+                for (int i = 0; i <= n; i++)
+                {
+                    Console.Write(i + " " + $"({BacDinh[0, i]} - {BacDinh[1, i]}) ");
+
+                }
+                Console.WriteLine();
+            }
+            
+        }
+
         // MA TRAN KE
         public static void Ma_tran_ke()
         {
@@ -269,6 +331,8 @@ namespace DoAnLTDT
             Console.WriteLine($"c. So dinh cua do thi {XL_INPUT.Doc_So_Dinh() + 1} ");
             Console.WriteLine($"d. So canh cua do thi {XL_INPUT.Socanh_DT()}");
             XL_INPUT.Dem_Boi_Khuyen();
+            XL_INPUT.Dinh_T_CL();
+            XL_INPUT.Bac_tung_dinh();
 
 
 
