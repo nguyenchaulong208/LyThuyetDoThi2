@@ -15,7 +15,7 @@ namespace DoAnLTDT
         public static int n;
         // ma tran danh sach ke co trong so
         public static int[,] data;
-        // ma tran lien ke
+        // ma tran lien ke ss
         public static int[,] data_ke;
 
        
