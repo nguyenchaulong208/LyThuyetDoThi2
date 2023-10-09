@@ -26,3 +26,10 @@ D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.Assemb
 D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
 D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
 D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe.config
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.pdb
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.AssemblyReference.cache
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
