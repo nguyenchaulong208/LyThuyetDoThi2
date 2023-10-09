@@ -31,7 +31,7 @@ namespace DoAnLTDT
             string[] lines = File.ReadAllLines(filename);
             n = int.Parse(lines[0]);
 
-
+        // Tạo giá trị ban đầu là 0 cho 2 mảng 2 chiều 
             DATA();
 
             for (int i = 1; i <= n + 1; i++)
@@ -179,7 +179,7 @@ namespace DoAnLTDT
         public static int[,] Bac_Dinh()
         {
             int[,] kq = new int[2, n + 1];
-            int dem = 0;
+            
             for (int i = 0; i < 2; i++)
             {
                 for (int j = 0; j < n + 1; j++)
@@ -191,14 +191,20 @@ namespace DoAnLTDT
             {
                 for (int i = 0; i <= n; i++)
                 {
-                    for (int j = dem; j <= n; j++)
+                    for (int j = 0; j <= n; j++)
                     {
-                        if (data_ke[i, j] != 0)
+                        if(i==j)
                         {
-                            kq[0, j] += data_ke[i, j];
+                            kq[0, i] += 2*data_ke[i, j];
                         }
+                        else
+                        {
+                            kq[0, i] += data_ke[i,j];
+
+                        }
+                        
                     }
-                    dem += 1;
+                 
                 }
                 return kq;
             }
