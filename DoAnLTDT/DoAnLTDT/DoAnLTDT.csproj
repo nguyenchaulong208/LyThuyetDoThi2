@@ -47,7 +47,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XL_INPUT.cs" />
+    <Compile Include="XL_YC.cs" />
     <Compile Include="Xuly.cs" />
+    <Compile Include="YC1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

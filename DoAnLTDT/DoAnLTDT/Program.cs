@@ -13,7 +13,7 @@ namespace DoAnLTDT
             
             string filename = "input.txt";
             XL_INPUT.KiemTraFile(filename);
-            XL_YC_DA.YC1();
+            YC1.Run_YC1();
          //   Xuly.ChuyenDoiMTK(filename);
          ////   Xuly.outputarray(Xuly.data);
             Console.Read();
