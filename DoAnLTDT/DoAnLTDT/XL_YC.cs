@@ -231,7 +231,12 @@ namespace DoAnLTDT
 
         }
 
-        
+        //Xuat ket qua
+        public static void YeuCau2()
+        {
+             
+            Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu sau: ");
+        }
     }
 
     

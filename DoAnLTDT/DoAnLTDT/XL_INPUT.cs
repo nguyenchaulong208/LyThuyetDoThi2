@@ -17,7 +17,7 @@ namespace DoAnLTDT
         //Kiem tra file co ton tai hay khong va doc file
         public static bool KiemTraFile(string filename)
         {
-
+            var checkTrongso = Kiemtra_TrongSo(filename);
             if (!File.Exists(filename))
             {
                 Console.WriteLine("File khong ton tai!!!");
@@ -28,38 +28,44 @@ namespace DoAnLTDT
 
         // Tạo giá trị ban đầu là 0 cho 2 mảng 2 chiều 
             DATA();
-
-            for (int i = 1; i < DataDoThi.n; i++)
+            if(checkTrongso == false)
             {
-                string t = lines[i] + " ";
-
-                string[] Mang = new string[DataDoThi.n];
-                Mang = t.Split(' ');
-                int k = Convert.ToInt32(Mang[0]);
-                for (int j = 1; j < k; j++)
+                for (int i = 1; i < DataDoThi.n; i++)
                 {
-                    DataDoThi.data[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] = Convert.ToInt32(Mang[2 * (j - 1) + 2]);
-                    DataDoThi.data_ke[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] += 1;
+                    string t = lines[i] + " ";
+
+                    string[] Mang = new string[DataDoThi.n];
+                    Mang = t.Split(' ');
+                    int k = Convert.ToInt32(Mang[0]);
+                    for (int j = 1; j < k; j++)
+                    {
+                        DataDoThi.data[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] = Convert.ToInt32(Mang[2 * (j - 1) + 2]);
+                        DataDoThi.data_ke[(i - 1), Convert.ToInt32(Mang[2 * j + 1])] += 1;
+
+                    }
+
 
                 }
-
-
             }
-            // test ma tran ke co trong so
-            for (int m = 0; m < DataDoThi.n; m++)
+            
+            
+                      return true;
+        }
+        //Kiem tra do thi co trong so hay khong
+        public static bool Kiemtra_TrongSo(string filename)
+        {
+            string[] lines = File.ReadAllLines(filename);
+            for (int i = 0; i < DataDoThi.n;i++)
             {
-                for (int r = 0; r < DataDoThi.n; r++)
+                string[] tokens = lines[i + 1].Split(' ');
+                if (tokens.Length % 2 == 0)
                 {
-                    Console.Write(DataDoThi.data[m, r] + " ");
+                    return false;
                 }
-                Console.WriteLine();
-
+               
             }
-
-
             return true;
         }
-
         //TẠO DỰNG MẢNG 2 CHIỀU VỚI GIÁ TRỊ LÀ 0
         public static void DATA()
         {

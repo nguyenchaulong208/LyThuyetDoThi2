@@ -29,9 +29,30 @@ namespace DoAnLTDT
                 DanhDau[i] = false;
             }
             //Duyet do thi theo chieu sau DFS
+            XL_YC.YeuCau2();
             YC2.DFS(dinhBD, DanhDau);
-            
-            
+            Console.WriteLine($"c. ");
+            var result = XL_YC.Vector();
+            if(result == true)
+            {
+                Console.WriteLine("Do thi vo huong");
+            }
+            else
+            {
+                Console.WriteLine("Khong la do thi vo huong");
+            }
+
+            var checkTrongso = XL_INPUT.Kiemtra_TrongSo(filename);
+            if(checkTrongso == false)
+            {
+                Console.WriteLine($"Do thi khong co trong so");
+            }
+            else
+            {
+                Console.WriteLine($"Do thi co trong so");
+            }
+
+
         }
     }
 }
