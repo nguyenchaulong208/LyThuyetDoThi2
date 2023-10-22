@@ -24,7 +24,7 @@ namespace DoAnLTDT
             //In ra dinh da duyet
             Console.Write(dinh + " ");
             //Duyet cac dinh ke cua dinh dang xet
-            for (int i = 0; i < DataDoThi.n+1; i++)
+            for (int i = 0; i < DataDoThi.n; i++)
             {
                 //Neu dinh ke chua duoc duyet thi duyet dinh ke
                 if (DataDoThi.data_ke[dinh, i] == 1 && DanhDau[i] == false)

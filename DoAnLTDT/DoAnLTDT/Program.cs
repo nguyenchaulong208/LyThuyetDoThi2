@@ -22,9 +22,9 @@ namespace DoAnLTDT
             //Nhap dinh bat dau vieng tham
             int dinhBD = YC2.NhapDinhBatDau();
             //Tao mang danh dau
-            bool[] DanhDau = new bool[DataDoThi.n + 1];
+            bool[] DanhDau = new bool[DataDoThi.n];
             //Khoi tao mang danh dau
-            for (int i = 0; i < DataDoThi.n+1; i++)
+            for (int i = 0; i < DataDoThi.n; i++)
             {
                 DanhDau[i] = false;
             }
