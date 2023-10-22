@@ -10,9 +10,9 @@ namespace DoAnLTDT
     {
         // n la so dinh
         public static int n;
-        // ma tran danh sach ke co trong so
+        // ma tran ke co trong so
         public static int[,] data;
-        // ma tran lien ke
+        // ma tran ke
         public static int[,] data_ke;
     }
 }

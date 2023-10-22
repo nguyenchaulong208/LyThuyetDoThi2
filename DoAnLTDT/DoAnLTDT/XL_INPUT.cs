@@ -12,11 +12,11 @@ namespace DoAnLTDT
     public static class XL_INPUT
     {
         // n la so dinh
-        public static int n;
+        //public static int n;
         // ma tran danh sach ke co trong so
-        public static int[,] data;
+        //public static int[,] data;
         // ma tran lien ke
-        public static int[,] data_ke;
+        //public static int[,] data_ke;
 
 
         //Kiem tra file co ton tai hay khong va doc file
@@ -29,33 +29,33 @@ namespace DoAnLTDT
                 return false;
             }
             string[] lines = File.ReadAllLines(filename);
-            n = int.Parse(lines[0]);
+            DataDoThi.n = int.Parse(lines[0]);
 
         // Tạo giá trị ban đầu là 0 cho 2 mảng 2 chiều 
             DATA();
 
-            for (int i = 1; i <= n + 1; i++)
+            for (int i = 1; i <= DataDoThi.n + 1; i++)
             {
                 string t = lines[i] + " ";
 
-                string[] Mang = new string[n + 1];
+                string[] Mang = new string[DataDoThi.n + 1];
                 Mang = t.Split(' ');
                 int k = Convert.ToInt32(Mang[0]);
                 for (int j = 1; j <= k; j++)
                 {
-                    data[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] = Convert.ToInt32(Mang[2 * (j - 1) + 2]);
-                    data_ke[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] += 1;
+                    DataDoThi.data[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] = Convert.ToInt32(Mang[2 * (j - 1) + 2]);
+                    DataDoThi.data_ke[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] += 1;
 
                 }
 
 
             }
             // test ma tran ke co trong so
-            for (int m = 0; m <= n; m++)
+            for (int m = 0; m <= DataDoThi.n; m++)
             {
-                for (int r = 0; r <= n; r++)
+                for (int r = 0; r <= DataDoThi.n; r++)
                 {
-                    Console.Write(data[m, r] + " ");
+                    Console.Write(DataDoThi.data[m, r] + " ");
                 }
                 Console.WriteLine();
 
@@ -68,14 +68,14 @@ namespace DoAnLTDT
         //TẠO DỰNG MẢNG 2 CHIỀU VỚI GIÁ TRỊ LÀ 0
         public static void DATA()
         {
-            data_ke = new int[n + 1, n + 1];
-            data = new int[n + 1, n + 1];
-            for (int i = 0; i <= n; i++)
+            DataDoThi.data_ke = new int[DataDoThi.n + 1, DataDoThi.n + 1];
+            DataDoThi.data = new int[DataDoThi.n + 1, DataDoThi.n + 1];
+            for (int i = 0; i <= DataDoThi.n; i++)
             {
-                for (int j = 0; j <= n; j++)
+                for (int j = 0; j <= DataDoThi.n; j++)
                 {
-                    data[i, j] = 0;
-                    data_ke[i, j] = 0;
+                    DataDoThi.data[i, j] = 0;
+                    DataDoThi.data_ke[i, j] = 0;
                 }
 
             }

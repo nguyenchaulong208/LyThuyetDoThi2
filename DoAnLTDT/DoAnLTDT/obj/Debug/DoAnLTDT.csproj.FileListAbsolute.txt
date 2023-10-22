@@ -40,3 +40,10 @@ E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.Assem
 E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
 E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
 E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.AssemblyReference.cache
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe.config
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.pdb

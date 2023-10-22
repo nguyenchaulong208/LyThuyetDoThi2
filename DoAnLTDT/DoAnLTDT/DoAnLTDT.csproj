@@ -49,6 +49,7 @@
     <Compile Include="XL_INPUT.cs" />
     <Compile Include="XL_YC.cs" />
     <Compile Include="YC1.cs" />
+    <Compile Include="YC2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

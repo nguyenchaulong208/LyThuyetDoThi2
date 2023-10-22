@@ -19,11 +19,11 @@ namespace DoAnLTDT
 
             if (Vector() == true)
             {
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
-                    for (int j = dem; j <= XL_INPUT.n; j++)
+                    for (int j = dem; j <= DataDoThi.n; j++)
                     {
-                        KQ += XL_INPUT.data_ke[i, j];
+                        KQ += DataDoThi.data_ke[i, j];
                     }
                     dem += 1;
                 }
@@ -31,11 +31,11 @@ namespace DoAnLTDT
             }
             else
             {
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
-                    for (int j = 0; j <= XL_INPUT.n; j++)
+                    for (int j = 0; j <= DataDoThi.n; j++)
                     {
-                        KQ += XL_INPUT.data_ke[i, j];
+                        KQ += DataDoThi.data_ke[i, j];
                     }
                 }
                 return KQ;
@@ -51,17 +51,17 @@ namespace DoAnLTDT
 
             if (Vector() == true)
             {
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
-                    for (int j = dem; j <= XL_INPUT.n; j++)
+                    for (int j = dem; j <= DataDoThi.n; j++)
                     {
-                        if (XL_INPUT.data_ke[i, j] == 2)
+                        if (DataDoThi.data_ke[i, j] == 2)
                         {
                             KQ[0] += 1;
                         }
-                        if (XL_INPUT.data_ke[i, j] != 0 && i == j)
+                        if (DataDoThi.data_ke[i, j] != 0 && i == j)
                         {
-                            KQ[1] += XL_INPUT.data_ke[i, j];
+                            KQ[1] += DataDoThi.data_ke[i, j];
                         }
                     }
                     dem += 1;
@@ -71,19 +71,20 @@ namespace DoAnLTDT
                 Console.WriteLine($"   So luong cap dinh xuat hien canh khuyen: {KQ[1]}");
 
             }
+
             else
             {
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
-                    for (int j = 0; j <= XL_INPUT.n; j++)
+                    for (int j = 0; j <= DataDoThi.n; j++)
                     {
-                        if (XL_INPUT.data_ke[i, j] == 2)
+                        if (DataDoThi.data_ke[i, j] == 2)
                         {
                             KQ[0] += 1;
                         }
-                        if (XL_INPUT.data_ke[i, j] != 0 && i == j)
+                        if (DataDoThi.data_ke[i, j] != 0 && i == j)
                         {
-                            KQ[1] += XL_INPUT.data_ke[i, j];
+                            KQ[1] += DataDoThi.data_ke[i, j];
                         }
                     }
                 }
@@ -96,28 +97,28 @@ namespace DoAnLTDT
         // BAC CUA DINH
         public static int[,] Bac_Dinh()
         {
-            int[,] kq = new int[2, XL_INPUT.n + 1];
+            int[,] kq = new int[2, DataDoThi.n + 1];
 
             for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < XL_INPUT.n + 1; j++)
+                for (int j = 0; j < DataDoThi.n + 1; j++)
                 {
                     kq[i, j] = 0;
                 }
             }
             if (Vector() == true)
             {
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
-                    for (int j = 0; j <= XL_INPUT.n; j++)
+                    for (int j = 0; j <= DataDoThi.n; j++)
                     {
                         if (i == j)
                         {
-                            kq[0, i] += 2 * XL_INPUT.data_ke[i, j];
+                            kq[0, i] += 2 * DataDoThi.data_ke[i, j];
                         }
                         else
                         {
-                            kq[0, i] += XL_INPUT.data_ke[i, j];
+                            kq[0, i] += DataDoThi.data_ke[i, j];
 
                         }
 
@@ -128,14 +129,14 @@ namespace DoAnLTDT
             }
             else
             {
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
-                    for (int j = 0; j <= XL_INPUT.n; j++)
+                    for (int j = 0; j <= DataDoThi.n; j++)
                     {
-                        if (XL_INPUT.data_ke[i, j] != 0)
+                        if (DataDoThi.data_ke[i, j] != 0)
                         {
-                            kq[0, i] += XL_INPUT.data_ke[i, j];
-                            kq[1, j] += XL_INPUT.data_ke[i, j];
+                            kq[0, i] += DataDoThi.data_ke[i, j];
+                            kq[1, j] += DataDoThi.data_ke[i, j];
                         }
                     }
                 }
@@ -150,7 +151,7 @@ namespace DoAnLTDT
         {
             int dinh_treo = 0, dinh_co_lap = 0;
             int[,] BacDinh = Bac_Dinh();
-            for (int i = 0; i <= XL_INPUT.n; i++)
+            for (int i = 0; i <= DataDoThi.n; i++)
             {
                 if (BacDinh[0, i] + BacDinh[1, i] == 1)
                 {
@@ -173,7 +174,7 @@ namespace DoAnLTDT
             if (Vector() == true)
             {
                 Console.WriteLine("Bac tung dinh la ");
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
                     Console.Write(i + " " + $"({BacDinh[0, i] + BacDinh[1, i]}) ");
 
@@ -183,7 +184,7 @@ namespace DoAnLTDT
             else
             {
                 Console.WriteLine("(Bac vao - Bac ra)  tung dinh la ");
-                for (int i = 0; i <= XL_INPUT.n; i++)
+                for (int i = 0; i <= DataDoThi.n; i++)
                 {
                     Console.Write(i + " " + $"({BacDinh[0, i]} - {BacDinh[1, i]}) ");
 
@@ -197,11 +198,11 @@ namespace DoAnLTDT
         public static void Ma_tran_ke()
         {
 
-            for (int m = 0; m <= XL_INPUT.n; m++)
+            for (int m = 0; m <= DataDoThi.n; m++)
             {
-                for (int r = 0; r <= XL_INPUT.n; r++)
+                for (int r = 0; r <= DataDoThi.n; r++)
                 {
-                    Console.Write(XL_INPUT.data_ke[m, r] + " ");
+                    Console.Write(DataDoThi.data_ke[m, r] + " ");
                 }
                 Console.WriteLine();
 
@@ -216,11 +217,11 @@ namespace DoAnLTDT
         {
 
 
-            for (int i = 0; i <= XL_INPUT.n; i++)
+            for (int i = 0; i <= DataDoThi.n; i++)
             {
-                for (int j = 1; j <= XL_INPUT.n; j++)
+                for (int j = 1; j <= DataDoThi.n; j++)
                 {
-                    if (XL_INPUT.data_ke[i, j] != XL_INPUT.data_ke[j, i])
+                    if (DataDoThi.data_ke[i, j] != DataDoThi.data_ke[j, i])
                     {
                         return false;
                     }

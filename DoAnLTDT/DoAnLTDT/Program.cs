@@ -14,11 +14,24 @@ namespace DoAnLTDT
             string filename = "input.txt";
             XL_INPUT.KiemTraFile(filename);
             YC1.Run_YC1();
-         //   Xuly.ChuyenDoiMTK(filename);
-         ////   Xuly.outputarray(Xuly.data);
-            Console.Read();
-           
+            //   Xuly.ChuyenDoiMTK(filename);
+            ////   Xuly.outputarray(Xuly.data);
+            //Console.Read();
 
+            //Thuat toan DFS
+            //Nhap dinh bat dau vieng tham
+            int dinhBD = YC2.NhapDinhBatDau();
+            //Tao mang danh dau
+            bool[] DanhDau = new bool[DataDoThi.n + 1];
+            //Khoi tao mang danh dau
+            for (int i = 0; i < DataDoThi.n+1; i++)
+            {
+                DanhDau[i] = false;
+            }
+            //Duyet do thi theo chieu sau DFS
+            YC2.DFS(dinhBD, DanhDau);
+            
+            
         }
     }
 }
