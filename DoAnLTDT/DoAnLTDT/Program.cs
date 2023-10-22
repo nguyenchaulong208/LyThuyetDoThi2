@@ -42,15 +42,15 @@ namespace DoAnLTDT
                 Console.WriteLine("Khong la do thi vo huong");
             }
 
-            var checkTrongso = XL_INPUT.Kiemtra_TrongSo(filename);
-            if(checkTrongso == false)
-            {
-                Console.WriteLine($"Do thi khong co trong so");
-            }
-            else
-            {
-                Console.WriteLine($"Do thi co trong so");
-            }
+            //var checkTrongso = XL_INPUT.Kiemtra_TrongSo(filename);
+            //if(checkTrongso == false)
+            //{
+            //    Console.WriteLine($"Do thi khong co trong so");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"Do thi co trong so");
+            //}
 
 
         }
