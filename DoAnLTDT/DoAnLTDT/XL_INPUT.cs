@@ -82,14 +82,14 @@ namespace DoAnLTDT
 
                 }
             }
-                     for(int i = 0;i<DataDoThi.n;i++)
-                     {
-                          for(int j= 0;j<DataDoThi.n;j++)
-                          {
-                                 Console.Write(DataDoThi.data_ke[i, j]);
-                          }    
-                             Console.WriteLine()    ;
-                     }        
+                     //for(int i = 0;i<datadothi.n;i++)
+                     //{
+                     //     for(int j= 0;j<datadothi.n;j++)
+                     //     {
+                     //            console.write(datadothi.data_ke[i, j]);
+                     //     }    
+                     //        console.writeline()    ;
+                     //}        
            
                       return true;
 
