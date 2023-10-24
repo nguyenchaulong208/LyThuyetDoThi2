@@ -28,7 +28,7 @@ namespace DoAnLTDT
                     Console.WriteLine("La do thi co  huong");
                 }
 
-                Console.WriteLine($"c. So dinh cua do thi {DataDoThi.n + 1} ");
+                Console.WriteLine($"c. So dinh cua do thi {DataDoThi.n} ");
                 Console.WriteLine($"d. So canh cua do thi {XL_YC.Socanh_DT()}");
                 XL_YC.Dem_Boi_Khuyen();
                 XL_YC.Dinh_T_CL();
