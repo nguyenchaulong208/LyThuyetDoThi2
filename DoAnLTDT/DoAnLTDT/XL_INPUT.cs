@@ -25,32 +25,84 @@ namespace DoAnLTDT
             }
             string[] lines = File.ReadAllLines(filename);
             DataDoThi.n = int.Parse(lines[0]);
+            
+              
+            //TẠO DỰNG MẢNG 2 CHIỀU VỚI GIÁ TRỊ LÀ 0
+            
+                DataDoThi.data_ke = new int[DataDoThi.n, DataDoThi.n];
+                DataDoThi.data = new int[DataDoThi.n, DataDoThi.n];
+                for (int i = 0; i < DataDoThi.n; i++)
+                {
+                    for (int j = 0; j < DataDoThi.n; j++)
+                    {
+                        DataDoThi.data[i, j] = 0;
+                        DataDoThi.data_ke[i, j] = 0;
+                    }
 
-        // Tạo giá trị ban đầu là 0 cho 2 mảng 2 chiều 
-            DATA();
-            if(checkTrongso == false)
+                }
+
+            
+        // đưa giá trị vào
+            if (checkTrongso == false)
             {
-                for (int i = 1; i < DataDoThi.n; i++)
+                for (int i = 1; i <= DataDoThi.n; i++)
                 {
                     string t = lines[i] + " ";
 
                     string[] Mang = new string[DataDoThi.n];
                     Mang = t.Split(' ');
                     int k = Convert.ToInt32(Mang[0]);
-                    for (int j = 1; j < k; j++)
+                    for (int j = 1; j <= k; j++)
                     {
                         DataDoThi.data[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] = Convert.ToInt32(Mang[2 * (j - 1) + 2]);
-                        DataDoThi.data_ke[(i - 1), Convert.ToInt32(Mang[2 * j + 1])] += 1;
+                       
+                    }
+
+
+                }
+            }
+            else
+            {
+                for (int i = 1; i <= DataDoThi.n; i++)
+                {
+                    string t = lines[i] + " ";
+                 
+                    string[] Mang = new string[DataDoThi.n];
+                   
+                    Mang = t.Split(' ');
+                  
+                    int k = Convert.ToInt32(Mang[0]);
+                    for (int j = 1; j <= k; j++)
+                    {
+                        DataDoThi.data[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] = Convert.ToInt32(Mang[2 * (j - 1) + 2]);
+                        DataDoThi.data_ke[(i - 1), Convert.ToInt32(Mang[2 * (j - 1) + 1])] += 1;
 
                     }
 
 
                 }
             }
-            
-            
+                     for(int i = 0;i<DataDoThi.n;i++)
+            {
+                for(int j= 0;j<DataDoThi.n;j++)
+                {
+                    Console.Write(DataDoThi.data_ke[i, j]);
+                }
+                Console.WriteLine();
+            }        
+           
                       return true;
+
         }
+
+
+
+
+      
+
+
+
+
         //Kiem tra do thi co trong so hay khong
         public static bool Kiemtra_TrongSo(string filename)
         {
@@ -66,22 +118,8 @@ namespace DoAnLTDT
             }
             return true;
         }
-        //TẠO DỰNG MẢNG 2 CHIỀU VỚI GIÁ TRỊ LÀ 0
-        public static void DATA()
-        {
-            DataDoThi.data_ke = new int[DataDoThi.n, DataDoThi.n];
-            DataDoThi.data = new int[DataDoThi.n, DataDoThi.n];
-            for (int i = 0; i < DataDoThi.n; i++)
-            {
-                for (int j = 0; j < DataDoThi.n; j++)
-                {
-                    DataDoThi.data[i, j] = 0;
-                    DataDoThi.data_ke[i, j] = 0;
-                }
-
-            }
-
-        }
+       
+       
       
     }
 
