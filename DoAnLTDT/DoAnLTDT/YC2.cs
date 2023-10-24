@@ -24,6 +24,9 @@ namespace DoAnLTDT
         //DUYET DO THI
         public static void Run_YC2()
         {
+            Console.WriteLine("------------------");
+            Console.WriteLine("YEU CAU 2: DUYET DO THI:");
+            
             int Dinh_BD = NhapDinhBatDau();
             Console.WriteLine($"Source {Dinh_BD}");
             Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu sau: ");
@@ -35,7 +38,7 @@ namespace DoAnLTDT
         }
         public static int NhapDinhBatDau()
         {
-            Console.WriteLine("YEU CAU 2: DUYET DO THI:");
+           
             Console.Write("Nhap dinh bat dau: ");
             int Dinh_BD = int.Parse(Console.ReadLine());
 
