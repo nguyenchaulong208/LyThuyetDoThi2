@@ -9,8 +9,8 @@ namespace DoAnLTDT
     public class YC1
     {
         
-            //YÊU CẦU 1: PHÂN TÍCH THÔNG TIN ĐỒ THỊ
-            public static void Run_YC1()
+        //YÊU CẦU 1: PHÂN TÍCH THÔNG TIN ĐỒ THỊ
+        public static void Run_YC1()
             {
                 Console.WriteLine("YEU CAU 1: PHAN TICH THONG TIN DO THI:");
                 Console.WriteLine("a. Ma tran ke cua do thi:");

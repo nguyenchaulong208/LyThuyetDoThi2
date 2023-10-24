@@ -1,18 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DoAnLTDT
 {
-    public class YC2
+    internal class Duyet_Danh_Sach
     {
-        //Duyet do thi theo chieu sau DFS
-        //Nhan dinh bat dau
+        
+        public static string DS_DFS;
+        public static string DS_BFS;
+
+
+    }
+    public class YC2 
+    {
+        
+        
+
+        //DUYET DO THI
         public static void Run_YC2()
         {
             int Dinh_BD = NhapDinhBatDau();
+            Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu sau: ");
+            Duyet_DFS(Dinh_BD);
+
+
         }
         public static int NhapDinhBatDau()
         {
@@ -29,32 +45,73 @@ namespace DoAnLTDT
          
             return Dinh_BD;
         }
-        //DFS - dung de quy
-        public static void DFS(int dinh, bool[] DanhDau)
+
+
+
+        //DFS - DE QUY
+        public static void Duyet_DFS(int dinh)
         {
-            //Danh dau dinh da duyet
-            DanhDau[dinh] = true;
-            //In ra dinh da duyet
-            Console.Write(dinh + " ->");
-            //Duyet cac dinh ke cua dinh dang xet
+
+            Boolean[] Visit_Dinh = new Boolean[DataDoThi.n];
+            Duyet_Danh_Sach.DS_DFS = $"{dinh}";
             for (int i = 0; i < DataDoThi.n; i++)
             {
-                //Neu dinh ke chua duoc duyet thi duyet dinh ke
-                if (DataDoThi.data_ke[dinh, i] == 1 && DanhDau[i] == false)
+                Visit_Dinh[i] = false;
+            }
+            Visit_Dinh[dinh] = true;
+            DFS(Visit_Dinh, dinh);
+            Console.WriteLine(Duyet_Danh_Sach.DS_DFS);
+
+
+
+
+        }
+       public static Boolean[] DFS(Boolean[] bools, int Dinh)
+        {
+            if(Check_Dinh_Ke(bools, Dinh)==false)
+            {
+                return bools;
+            }
+            for (int i = 0; i < DataDoThi.n; i++)
+            {
+                if (DataDoThi.data_ke[Dinh, i] != 0 && bools[i] == false)
                 {
-                    DFS(i, DanhDau);
+                    bools[i] = true;
+                    Duyet_Danh_Sach.DS_DFS += " " + i;
+                    DFS(bools, i);
+                 
                 }
             }
+
+
+
+            return bools;
         }
-        public static void YeuCau2()
+        public static Boolean Check_Dinh_Ke(Boolean[] bools, int Dinh)
         {
-
-            Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu sau: ");
+            for(int i = 0;i<DataDoThi.n; i++)
+            {
+                if (DataDoThi.data_ke[Dinh, i] != 0 && bools[i] == false)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
+        public static Boolean Check_Visit(Boolean[] Visit_Dinh)
+        {
+            
+            for(int i=0;i<DataDoThi.n;i++)
+            {
+                if (Visit_Dinh[i] == false)
+                {
+                    return false;
+                }
+            }
+            return true;
 
-
-
-
+        }
+     
 
     }
 }

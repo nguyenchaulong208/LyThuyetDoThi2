@@ -14,49 +14,11 @@ namespace DoAnLTDT
             string filename = "input.txt";
             XL_INPUT.KiemTraFile(filename);
             YC1.Run_YC1();
-            YC2.Run_YC2();  
-
-
-
-/*
-            //   Xuly.ChuyenDoiMTK(filename);
-            ////   Xuly.outputarray(Xuly.data);
-            //Console.Read();
-
-            //Thuat toan DFS
-            //Nhap dinh bat dau vieng tham
-            int dinhBD = YC2.NhapDinhBatDau();
-            //Tao mang danh dau
-            bool[] DanhDau = new bool[DataDoThi.n];
-            //Khoi tao mang danh dau
-            for (int i = 0; i < DataDoThi.n; i++)
-            {
-                DanhDau[i] = false;
-            }
-            //Duyet do thi theo chieu sau DFS
-            XL_YC.YeuCau2();
-            YC2.DFS(dinhBD, DanhDau);
-            Console.WriteLine($"c. ");
-            var result = XL_YC.Vector();
-            if(result == true)
-            {
-                Console.WriteLine("Do thi vo huong");
-            }
-            else
-            {
-                Console.WriteLine("Khong la do thi vo huong");
-            }
-
-            //var checkTrongso = XL_INPUT.Kiemtra_TrongSo(filename);
-            //if(checkTrongso == false)
-            //{
-            //    Console.WriteLine($"Do thi khong co trong so");
-            //}
-            //else
-            //{
-            //    Console.WriteLine($"Do thi co trong so");
-            //}
-*/
+            YC2.Run_YC2();
+            YC3.Run_YC3();
+            YC4.Run_YC4();
+            YC5.Run_YC5();
+                      
 
         }
     }

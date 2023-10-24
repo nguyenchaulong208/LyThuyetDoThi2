@@ -47,9 +47,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XL_INPUT.cs" />
-    <Compile Include="XL_YC.cs" />
     <Compile Include="YC1.cs" />
     <Compile Include="YC2.cs" />
+    <Compile Include="YC3.cs" />
+    <Compile Include="YC4.cs" />
+    <Compile Include="YC5.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
