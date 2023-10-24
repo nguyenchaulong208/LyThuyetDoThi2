@@ -26,19 +26,7 @@ namespace DoAnLTDT
                 Console.Write("Nhap lai dinh bat dau: ");
                 Dinh_BD = int.Parse(Console.ReadLine());
             }
-           //foreach (var item in DataDoThi.data_ke)
-           // {
-           //     if (Dinh_BD > DataDoThi.n)
-           //     {
-           //         Console.WriteLine("Dinh khong ton tai");
-           //         Console.Write("Nhap lai dinh bat dau: ");
-           //         Dinh_BD = int.Parse(Console.ReadLine());
-           //     }
-           //     else
-           //     {
-           //         break;
-           //     }
-           // }
+         
             return Dinh_BD;
         }
         //DFS - dung de quy
