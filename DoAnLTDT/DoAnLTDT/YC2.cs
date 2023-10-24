@@ -25,9 +25,12 @@ namespace DoAnLTDT
         public static void Run_YC2()
         {
             int Dinh_BD = NhapDinhBatDau();
+            Console.WriteLine($"Source {Dinh_BD}");
             Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu sau: ");
             Duyet_DFS(Dinh_BD);
-
+            Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu rong: ");
+            Duyet_BFS(Dinh_BD);
+            
 
         }
         public static int NhapDinhBatDau()
@@ -46,8 +49,6 @@ namespace DoAnLTDT
             return Dinh_BD;
         }
 
-
-
         //DFS - DE QUY
         public static void Duyet_DFS(int dinh)
         {
@@ -62,10 +63,8 @@ namespace DoAnLTDT
             DFS(Visit_Dinh, dinh);
             Console.WriteLine(Duyet_Danh_Sach.DS_DFS);
 
-
-
-
         }
+       
        public static Boolean[] DFS(Boolean[] bools, int Dinh)
         {
             if(Check_Dinh_Ke(bools, Dinh)==false)
@@ -111,7 +110,100 @@ namespace DoAnLTDT
             return true;
 
         }
-     
 
+        //BFS
+        public static void Duyet_BFS(int dinh)
+        {
+            Boolean[] Visit_Dinh = new Boolean[DataDoThi.n];
+            Duyet_Danh_Sach.DS_BFS = $"{dinh}";
+            for (int i = 0; i < DataDoThi.n; i++)
+            {
+                Visit_Dinh[i] = false;
+            }
+            Visit_Dinh[dinh] = true;
+            BFS(Visit_Dinh, dinh);
+            Console.WriteLine(Duyet_Danh_Sach.DS_BFS);
+
+        }
+        public static Boolean[] BFS(Boolean[] bools,int Dinh)
+        {
+            
+            while(Check_Dinh_Moi(bools)==true)
+            {
+                for (int i = 0; i < DataDoThi.n; i++)
+                {
+
+                    if ( bools[i] == true)
+                    {
+                        for (int j = 0; j < DataDoThi.n; j++)
+                        {
+                            if (DataDoThi.data[i, j] != 0 && bools[j] == false)
+                            {
+                                Duyet_Danh_Sach.DS_BFS += " " + j;
+                                bools[j] = true;
+                            }
+                        }
+                    }
+
+                    // NEU CO DINH CO LAP HOAC KHONG LIEN THONG 
+                    //if(i==DataDoThi.n-1)
+                    //{
+                    //return bools;
+                    //}
+                }
+            }
+
+            /*
+            while(Check_Visit(bools)==false)
+            {
+
+                for(int i=0;i<DataDoThi.n;i++)
+                {
+                    
+                        if (Check_Dinh_Ke(bools,i)==true && bools[i] == true)
+                        {
+                           for(int j=0;j<DataDoThi.n;j++)
+                           {
+                              if (DataDoThi.data[i,j]!=0 && bools[j]==false)
+                              {
+                                Duyet_Danh_Sach.DS_BFS += " " + j;
+                                bools[j] = true;
+                              }
+                           }
+                        }
+                        
+                        // NEU CO DINH CO LAP HOAC KHONG LIEN THONG 
+                        //if(i==DataDoThi.n-1)
+                        //{
+                        //return bools;
+                        //}
+                }
+                
+            }
+            */
+            return bools;
+           
+     // check đỉnh treo
+           
+           
+          
+        }
+        public static Boolean Check_Dinh_Moi(Boolean[] bools)
+        {
+            for(int i=0;i<DataDoThi.n;i++)
+            {
+                if (bools[i]==true)
+                {
+                    for(int j=0;j<DataDoThi.n;j++)
+                    {
+                        if (DataDoThi.data[i,j]!=0 && bools[j]==false)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
     }
 }
