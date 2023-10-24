@@ -14,6 +14,11 @@ namespace DoAnLTDT
             string filename = "input.txt";
             XL_INPUT.KiemTraFile(filename);
             YC1.Run_YC1();
+            YC2.Run_YC2();  
+
+
+
+/*
             //   Xuly.ChuyenDoiMTK(filename);
             ////   Xuly.outputarray(Xuly.data);
             //Console.Read();
@@ -51,7 +56,7 @@ namespace DoAnLTDT
             //{
             //    Console.WriteLine($"Do thi co trong so");
             //}
-
+*/
 
         }
     }

@@ -42,7 +42,7 @@ namespace DoAnLTDT
                 }
 
             
-        // đưa giá trị vào
+        // ĐƯA GIÁ TRỊ VÀO 2 MẢNG ĐÃ TẠO
             if (checkTrongso == false)
             {
                 for (int i = 1; i <= DataDoThi.n; i++)
@@ -82,14 +82,7 @@ namespace DoAnLTDT
 
                 }
             }
-                     //for(int i = 0;i<datadothi.n;i++)
-                     //{
-                     //     for(int j= 0;j<datadothi.n;j++)
-                     //     {
-                     //            console.write(datadothi.data_ke[i, j]);
-                     //     }    
-                     //        console.writeline()    ;
-                     //}        
+                                 
            
                       return true;
 

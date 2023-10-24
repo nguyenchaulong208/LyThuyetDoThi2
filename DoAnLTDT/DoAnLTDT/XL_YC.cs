@@ -10,7 +10,7 @@ namespace DoAnLTDT
     {
 
 
-        // So canh
+        // TÍNH SỐ CẠNH ĐỒ THỊ
         public static int Socanh_DT()
         {
             int KQ = 0;

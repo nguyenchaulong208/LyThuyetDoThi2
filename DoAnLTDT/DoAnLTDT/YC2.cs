@@ -10,25 +10,36 @@ namespace DoAnLTDT
     {
         //Duyet do thi theo chieu sau DFS
         //Nhan dinh bat dau
+        public static void Run_YC2()
+        {
+            int Dinh_BD = NhapDinhBatDau();
+        }
         public static int NhapDinhBatDau()
         {
-            Console.WriteLine("Yeu cau 2:");
+            Console.WriteLine("YEU CAU 2: DUYET DO THI:");
             Console.Write("Nhap dinh bat dau: ");
-            int dinh = int.Parse(Console.ReadLine());
-           foreach (var item in DataDoThi.data_ke)
+            int Dinh_BD = int.Parse(Console.ReadLine());
+
+            while (Dinh_BD < 0 || Dinh_BD>= DataDoThi.n)
             {
-                if (dinh > DataDoThi.n)
-                {
-                    Console.WriteLine("Dinh khong ton tai");
-                    Console.Write("Nhap lai dinh bat dau: ");
-                    dinh = int.Parse(Console.ReadLine());
-                }
-                else
-                {
-                    break;
-                }
+                Console.WriteLine("Dinh khong ton tai");
+                Console.Write("Nhap lai dinh bat dau: ");
+                Dinh_BD = int.Parse(Console.ReadLine());
             }
-            return dinh;
+           //foreach (var item in DataDoThi.data_ke)
+           // {
+           //     if (Dinh_BD > DataDoThi.n)
+           //     {
+           //         Console.WriteLine("Dinh khong ton tai");
+           //         Console.Write("Nhap lai dinh bat dau: ");
+           //         Dinh_BD = int.Parse(Console.ReadLine());
+           //     }
+           //     else
+           //     {
+           //         break;
+           //     }
+           // }
+            return Dinh_BD;
         }
         //DFS - dung de quy
         public static void DFS(int dinh, bool[] DanhDau)
