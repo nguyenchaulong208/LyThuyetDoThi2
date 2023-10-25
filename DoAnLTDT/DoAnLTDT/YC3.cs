@@ -28,6 +28,8 @@ namespace DoAnLTDT
             Console.WriteLine("YEU CAU 3: Tim cay khung nho nhat.");
             //Kiem tra tinh lien thong
             kqLienThong();
+            Console.WriteLine("Thuat toan Prime");
+            Prime(DataDoThi.data, 0);
         }
         #region//Kiem tra do thi lien thong
         /*
@@ -87,6 +89,57 @@ namespace DoAnLTDT
                 Console.WriteLine("Do thi vo huong lien thong");
             }
         }
+        #endregion
+        #region// Thuat toan Prim
+        public static void Prime(int[,] doThi, int dinhBdau)
+        {
+            CayKhung[] canhCayKhung = new CayKhung[DataDoThi.n -1];
+            int canh = 0;
+            bool[] dinhDaXet = new bool[DataDoThi.n];
+            //Khoi tao gia tri cho dinh da xet
+            for(int i = 0; i < DataDoThi.n; i++)
+            {
+                dinhDaXet[i] = false;
+            }
+            dinhDaXet[dinhBdau] = true;
+            //Thuat toan Prim
+            while(canh < DataDoThi.n - 1)
+            {
+                CayKhung canhNhoNhat = new CayKhung();
+                int min = int.MaxValue;
+                for(int i = 0; i < DataDoThi.n; i++)
+                {
+                    if (dinhDaXet[i] == false)
+                    {
+                        for(int j =0; j < DataDoThi.n; j++)
+                        {
+                            if(DataDoThi.data[i, j] != 0)
+                            {
+                                if (DataDoThi.data[i, j] < min)
+                                {
+                                    min = DataDoThi.data[i, j];
+                                    canhNhoNhat._dinhBdau = i;
+                                    canhNhoNhat._dinhKthuc = j;
+                                    canhNhoNhat._trongSo = min;
+                                }
+                            }
+
+                        }
+
+                    }
+                }
+                  canhCayKhung[canh] = canhNhoNhat;
+                dinhDaXet[canhNhoNhat._dinhKthuc] = true;
+                canh++;
+            }
+
+            foreach(var item in canhCayKhung)
+            {
+                Console.WriteLine($"{item._dinhBdau} - {item._dinhKthuc}: {item._trongSo}");
+            }
+        }
+       
+
         #endregion
     }
 }

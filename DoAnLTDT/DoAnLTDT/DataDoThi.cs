@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoAnLTDT
 {
-    internal class DataDoThi
+    public class DataDoThi
     {
         // n la so dinh
         public static int n;
@@ -14,5 +14,30 @@ namespace DoAnLTDT
         public static int[,] data;
         // ma tran ke
         public static int[,] data_ke;
+    }
+    //Du lieu cay khung nho nhat
+    public  class CayKhung 
+    {
+        private int dinhBdau;
+        private int dinhKthuc;
+        private int trongSo;
+        //comtructor
+        public int _dinhBdau
+        {
+            get { return this.dinhBdau; }
+            set { dinhBdau = value; }
+        }
+        public int _dinhKthuc
+        {
+            get { return this.dinhKthuc; }
+            set { dinhKthuc = value; }
+        }
+        public int _trongSo
+        {
+            get { return trongSo; }
+            set { trongSo = value; }
+        }
+
+        
     }
 }
