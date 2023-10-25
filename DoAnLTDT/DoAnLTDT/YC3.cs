@@ -26,7 +26,7 @@ namespace DoAnLTDT
         {
             Console.WriteLine("------------------");
             Console.WriteLine("YEU CAU 3: Tim cay khung nho nhat.");
-            
+            //Kiem tra tinh lien thong
             kqLienThong();
         }
         #region//Kiem tra do thi lien thong
