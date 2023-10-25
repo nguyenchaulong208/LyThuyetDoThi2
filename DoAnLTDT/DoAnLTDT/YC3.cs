@@ -72,7 +72,7 @@ namespace DoAnLTDT
                 }
                 
             }
-            return true;
+            return false;
         }
         //Lien thong
         public static void kqLienThong()
