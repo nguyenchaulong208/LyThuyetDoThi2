@@ -31,9 +31,9 @@ namespace DoAnLTDT
             Console.WriteLine($"Source {Dinh_BD}");
             Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu sau: ");
             Duyet_DFS(Dinh_BD);
-            Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu rong: ");
+            Console.WriteLine($"b. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu rong: ");
             Duyet_BFS(Dinh_BD);
-            
+            Console.WriteLine($"c. Nếu là đồ thị vô hướng, in ra màn hình số lượng thành phần liên thông và danh sách đỉnh): ");
 
         }
         public static int NhapDinhBatDau()
@@ -58,10 +58,7 @@ namespace DoAnLTDT
 
             Boolean[] Visit_Dinh = new Boolean[DataDoThi.n];
             Duyet_Danh_Sach.DS_DFS = $"{dinh}";
-            for (int i = 0; i < DataDoThi.n; i++)
-            {
-                Visit_Dinh[i] = false;
-            }
+            Reset_Mang(Visit_Dinh);
             Visit_Dinh[dinh] = true;
             DFS(Visit_Dinh, dinh);
             Console.WriteLine(Duyet_Danh_Sach.DS_DFS);
@@ -148,49 +145,15 @@ namespace DoAnLTDT
                         }
                     }
 
-                    // NEU CO DINH CO LAP HOAC KHONG LIEN THONG 
-                    //if(i==DataDoThi.n-1)
-                    //{
-                    //return bools;
-                    //}
+                  
                 }
             }
-
-            /*
-            while(Check_Visit(bools)==false)
-            {
-
-                for(int i=0;i<DataDoThi.n;i++)
-                {
-                    
-                        if (Check_Dinh_Ke(bools,i)==true && bools[i] == true)
-                        {
-                           for(int j=0;j<DataDoThi.n;j++)
-                           {
-                              if (DataDoThi.data[i,j]!=0 && bools[j]==false)
-                              {
-                                Duyet_Danh_Sach.DS_BFS += " " + j;
-                                bools[j] = true;
-                              }
-                           }
-                        }
-                        
-                        // NEU CO DINH CO LAP HOAC KHONG LIEN THONG 
-                        //if(i==DataDoThi.n-1)
-                        //{
-                        //return bools;
-                        //}
-                }
-                
-            }
-            */
-            return bools;
-           
-     // check đỉnh treo
-           
-           
-          
+            
+            return bools;                
+        
         }
+
+
         public static Boolean Check_Dinh_Moi(Boolean[] bools)
         {
             for(int i=0;i<DataDoThi.n;i++)
@@ -208,5 +171,44 @@ namespace DoAnLTDT
             }
             return false;
         }
+
+        // Tìm thành phần liên thông
+        public static void Danh_Sach_Lien_Thong()
+        {
+            Boolean[] Visit_Dinh = new Boolean[DataDoThi.n];
+            Boolean[] Visit_Dinh_New = new Boolean[DataDoThi.n];
+            int So_Lien_Thong = 0;
+            Reset_Mang(Visit_Dinh);
+
+
+
+            for (int i = 0;i<DataDoThi.n; ++i)
+            {
+                if (Visit_Dinh[i]==false)
+                {
+                    So_Lien_Thong++;
+                    Visit_Dinh = BFS(Visit_Dinh,i);
+
+
+                }
+            }
+
+
+        }
+        public static Boolean[] Reset_Mang(Boolean[] mang)
+        {
+
+            for (int i = 0; i < DataDoThi.n; i++)
+            {
+                mang[i] = false;
+                
+            }
+            return mang;
+        }
+
+        
+
+
+
     }
 }
