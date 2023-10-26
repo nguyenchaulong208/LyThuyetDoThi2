@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +31,9 @@ namespace DoAnLTDT
             kqLienThong();
             Console.WriteLine("Thuat toan Prime");
             Prime(DataDoThi.data, 0);
+            Console.WriteLine("Thuat toan Kruskal");
+            SapXepCanh(DataDoThi.data);
+
         }
         #region//Kiem tra do thi lien thong
         /*
@@ -132,6 +136,8 @@ namespace DoAnLTDT
                 dinhDaXet[canhNhoNhat._dinhKthuc] = true;
                 canh++;
             }
+
+            //xuat ket qua thuat toan Prim
             int trongSoCayKhung = 0;
             foreach(var item in canhCayKhung)
             {
@@ -140,7 +146,26 @@ namespace DoAnLTDT
             }
             Console.WriteLine($"Trong so nho nhat cua cay khung: {trongSoCayKhung}");
         }
-       
+
+
+        #endregion
+
+        #region//Thuat toan Kruskal
+
+        //Sap xep cac canh theo thu tu tang dan
+        //Kiem tra chu trinh trong do thi
+        //Tim cay khung bang nho nhat bang thuat toan Kruskal
+        public static void Kruskal(int[,] doThi)
+        {
+            GtKruskal[] canhCayKhungKr = new GtKruskal[DataDoThi.n - 1];
+            int soCanhKr = 0;
+            int[] dinhDaXet = new int[DataDoThi.n];
+            GtKruskal[] dsCanhKr = new GtKruskal[DataDoThi.n * (DataDoThi.n-1)];
+            int soCanhDs = 0;
+        }
+
+
+        
 
         #endregion
     }

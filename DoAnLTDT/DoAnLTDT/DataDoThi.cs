@@ -15,8 +15,8 @@ namespace DoAnLTDT
         // ma tran ke
         public static int[,] data_ke;
     }
-    //Du lieu cay khung nho nhat
-    public  class CayKhung 
+    #region//Du lieu cay khung nho nhat Thuat toan Prim
+    public class CayKhung 
     {
         private int dinhBdau;
         private int dinhKthuc;
@@ -40,4 +40,32 @@ namespace DoAnLTDT
 
         
     }
+    #endregion
+
+    #region//Du lieu cay khung nho nhat Thuat toan Kruskal
+    public class GtKruskal
+    {
+        private int dinhBdauKr;
+        private int dinhKthucKr;
+        private int trongSoKr;
+        //contructor
+        public int _dinhBdauKr
+        {
+            get { return this.dinhBdauKr; }
+            set { dinhBdauKr = value; }
+        }
+        public int _dinhKthucKr
+        {
+            get { return this.dinhKthucKr; }
+            set { dinhKthucKr = value; }
+        }
+        public int _trongSoKr
+        {
+            get { return trongSoKr; }
+            set { trongSoKr = value; }
+        }
+    }
+
+    #endregion
+
 }
