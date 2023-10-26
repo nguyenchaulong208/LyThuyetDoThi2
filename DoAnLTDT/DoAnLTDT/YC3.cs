@@ -74,7 +74,7 @@ namespace DoAnLTDT
                 }
                 
             }
-            return false;
+            return true;
         }
         //Lien thong
         public static void kqLienThong()
@@ -109,11 +109,11 @@ namespace DoAnLTDT
                 int min = int.MaxValue;
                 for(int i = 0; i < DataDoThi.n; i++)
                 {
-                    if (dinhDaXet[i] == false)
+                    if (dinhDaXet[i] == true)
                     {
                         for(int j =0; j < DataDoThi.n; j++)
                         {
-                            if(DataDoThi.data[i, j] != 0)
+                            if(DataDoThi.data[i, j] != 0 && dinhDaXet[j] == false)
                             {
                                 if (DataDoThi.data[i, j] < min)
                                 {
@@ -132,11 +132,13 @@ namespace DoAnLTDT
                 dinhDaXet[canhNhoNhat._dinhKthuc] = true;
                 canh++;
             }
-
+            int trongSoCayKhung = 0;
             foreach(var item in canhCayKhung)
             {
                 Console.WriteLine($"{item._dinhBdau} - {item._dinhKthuc}: {item._trongSo}");
+                trongSoCayKhung += item._trongSo;
             }
+            Console.WriteLine($"Trong so nho nhat cua cay khung: {trongSoCayKhung}");
         }
        
 
