@@ -32,7 +32,10 @@ namespace DoAnLTDT
             Console.WriteLine("Thuat toan Prime");
             Prime(DataDoThi.data, 0);
             Console.WriteLine("Thuat toan Kruskal");
-            SapXepCanh(DataDoThi.data);
+            //Xuat ket qua thuat toan Kruskal
+            Kruskal(DataDoThi.data);
+
+
 
         }
         #region//Kiem tra do thi lien thong
@@ -149,23 +152,127 @@ namespace DoAnLTDT
 
 
         #endregion
-
-        #region//Thuat toan Kruskal
+               #region//Thuat toan Kruskal
 
         //Sap xep cac canh theo thu tu tang dan
+        public static GtKruskal[] SapXepCanh(int[,] doThi)
+        {
+            GtKruskal[] dsCanh = new GtKruskal[DataDoThi.n * (DataDoThi.n - 1)];
+            int soCanh = 0;
+            for(int i = 0; i < DataDoThi.n; i++)
+            {
+                for(int j = 0; j < DataDoThi.n; j++)
+                {
+                    if (DataDoThi.data[i,j] != 0)
+                    {
+                        dsCanh[soCanh] = new GtKruskal();
+                        dsCanh[soCanh]._dinhBdauKr = i;
+                        dsCanh[soCanh]._dinhKthucKr = j;
+                        dsCanh[soCanh]._trongSoKr = DataDoThi.data[i, j];
+                        soCanh++;
+                    }
+                }
+            }
+            //Sap xep cac canh theo thu tu tang dan
+            for(int i = 0; i < soCanh - 1; i++)
+            {
+                for(int j = i + 1; j < soCanh; j++)
+                {
+                    if (dsCanh[i]._trongSoKr > dsCanh[j]._trongSoKr)
+                    {
+                        GtKruskal temp = dsCanh[i];
+                        dsCanh[i] = dsCanh[j];
+                        dsCanh[j] = temp;
+                    }
+                }
+            }
+             return dsCanh;
+            
+            
+        }
         //Kiem tra chu trinh trong do thi
-        //Tim cay khung bang nho nhat bang thuat toan Kruskal
+        public bool KtChuTrinh(int canh)
+        {
+            GtKruskal[] dsCanh = SapXepCanh(DataDoThi.data);
+            //Kiem tra nhan dang cua 2 dinh co giong nhau khong, neu co tra ve true, neu khong gan nhan nho hon cho bien lab1 va nhan lon hon cho bien lab2 va cap nhat toan bo dinh co nhan lab2 bang gia tri lab1
+            int[] nhanDinh = new int[DataDoThi.n];
+            for(int i = 0; i < DataDoThi.n; i++)
+            {
+                nhanDinh[i] = i;
+            }
+            int lab1 = nhanDinh[dsCanh[canh]._dinhBdauKr];
+            int lab2 = nhanDinh[dsCanh[canh]._dinhKthucKr];
+            if (lab1 == lab2)
+            {
+                return true;
+            }
+            else
+            {
+                for(int i = 0; i < DataDoThi.n; i++)
+                {
+                    if (nhanDinh[i] == lab2)
+                    {
+                        nhanDinh[i] = lab1;
+                    }
+                }
+            }
+            return false;
+
+            
+            
+        }
+
         public static void Kruskal(int[,] doThi)
         {
-            GtKruskal[] canhCayKhungKr = new GtKruskal[DataDoThi.n - 1];
-            int soCanhKr = 0;
-            int[] dinhDaXet = new int[DataDoThi.n];
-            GtKruskal[] dsCanhKr = new GtKruskal[DataDoThi.n * (DataDoThi.n-1)];
-            int soCanhDs = 0;
+            GtKruskal[] dsCanh = SapXepCanh(doThi);
+            GtKruskal[] dsCanhCayKhung = new GtKruskal[DataDoThi.n - 1];
+            int soCanh = 0;
+            int trongSoCayKhung = 0;
+            
+            int[] nhanDinh = new int[DataDoThi.n];
+            for (int i = 0; i < DataDoThi.n; i++)
+            {
+                nhanDinh[i] = i;
+            }
+
+            // Thực hiện thuật toán Kruskal
+            for (int i = 0; i < dsCanh.Length; i++)
+            {
+                int dinhBdau = dsCanh[i]._dinhBdauKr;
+                int dinhKthuc = dsCanh[i]._dinhKthucKr;
+                int nhanDinhBdau = nhanDinh[dinhBdau];
+                int nhanDinhKthuc = nhanDinh[dinhKthuc];
+
+                if (nhanDinhBdau != nhanDinhKthuc)
+                {
+                    dsCanhCayKhung[soCanh] = dsCanh[i];
+                    soCanh++;
+                    trongSoCayKhung += dsCanh[i]._trongSoKr;
+
+                    for (int j = 0; j < DataDoThi.n; j++)
+                    {
+                        if (nhanDinh[j] == nhanDinhKthuc)
+                        {
+                            nhanDinh[j] = nhanDinhBdau;
+                        }
+                    }
+                }
+            }
+
+            // Xuất kết quả thuật toán Kruskal
+            for (int i = 0; i < soCanh; i++)
+            {
+                Console.WriteLine($"{dsCanhCayKhung[i]._dinhBdauKr} - {dsCanhCayKhung[i]._dinhKthucKr}: {dsCanhCayKhung[i]._trongSoKr}");
+            }
+
+            Console.WriteLine($"Trong so nho nhat cua cay khung: {trongSoCayKhung}");
         }
 
 
-        
+
+
+
+
 
         #endregion
     }
