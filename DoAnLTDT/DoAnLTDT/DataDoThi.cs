@@ -34,7 +34,7 @@ namespace DoAnLTDT
         }
         public int _trongSo
         {
-            get { return trongSo; }
+            get { return this.trongSo; }
             set { trongSo = value; }
         }
 
@@ -61,7 +61,7 @@ namespace DoAnLTDT
         }
         public int _trongSoKr
         {
-            get { return trongSoKr; }
+            get { return this.trongSoKr; }
             set { trongSoKr = value; }
         }
     }
