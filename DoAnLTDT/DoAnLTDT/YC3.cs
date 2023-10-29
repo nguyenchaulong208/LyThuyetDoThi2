@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,17 +30,12 @@ namespace DoAnLTDT
             Console.WriteLine("YEU CAU 3: Tim cay khung nho nhat.");
             //Kiem tra tinh lien thong
             kqLienThong();
+            //Chay thuat toan Prim
             Console.WriteLine("Thuat toan Prime");
             Prime(DataDoThi.data, 0);
+            //Chay thuat toan Kruskal
             Console.WriteLine("Thuat toan Kruskal");
-            //Xuat ket qua thuat toan Kruskal
-            //Kruskal(DataDoThi.data);
-            GtKruskal[] dsCanh = SapXepCanh(DanhSachCanh(DataDoThi.data));
-            for(int i = 0; i < dsCanh.Length; i++)
-            {
-                Console.WriteLine($"{dsCanh[i]._dinhBdauKr} - {dsCanh[i]._dinhKthucKr}: {dsCanh[i]._trongSoKr}");
-            }
-
+            Kruskal(DataDoThi.data);
 
         }
         #region//Kiem tra do thi lien thong
@@ -158,6 +154,29 @@ namespace DoAnLTDT
         #endregion
 
         #region//Thuat toan Kruskal
+        /* NOTE:
+         * Cac method su dung trong thuat toan Kruskal:
+         * NhanDinh(): Tao nhan danh dau cac dinh
+         * DanhSachCanh(): Tao mang chua tat ca cac canh cua do thi
+         *  - Khi dung method DanhSachCanh() se xuat hien cac gia tri null trong mang dsCanh
+         *  o nhung chi muc cuoi cung => khi xuat mang se bao loi "Object reference not set to an instance of an object" => can dung method KhuGiaTriNull() de loai bo nhung gia tri null
+         * KtChutrinh(): Kiem tra chu trinh cua do thi
+         *  Xet dinh dau va dinh cuoi cua canh trong danh sach canh tai vi tri dinh can xet
+         *  -   Neu khong co chu trinh thi tra ve true
+         *  -   Neu co chu trinh thi tra ve false va sap xep lai nhan dinh
+         * Kruskal(): Thuc hien thuat toan Kruskal
+         */
+
+        //Tao nhan danh dau cac dinh
+        public static int[] NhanDinh(int[,] doThi)
+        {
+            int[] dsNhan = new int[DataDoThi.n];
+            for(int i = 0; i < DataDoThi.n; i++)
+            {
+                dsNhan[i] = i;
+            }
+            return dsNhan;
+        }
         //Tao mang chua tat ca cac canh cua do thi
         public static GtKruskal[] DanhSachCanh(int[,] doThi)
         {
@@ -219,9 +238,63 @@ namespace DoAnLTDT
             return danhSach;
 
         }
+        private static bool KtChuTrinh(int idx)
+        {
+            //Kiem tra chu trinh
+            int[] dsNhan = NhanDinh(DataDoThi.data);
+            GtKruskal[] dsCanh = SapXepCanh(DanhSachCanh(DataDoThi.data));
+           
+            for(int i = 0; i < dsCanh.Length; i++)
+            {
+                
+                if(idx != dsCanh[i]._dinhBdauKr && idx != dsCanh[i]._dinhKthucKr)
+                {
+                    //sap xep lai nhan dinh
+                    int temp = dsNhan[dsCanh[i]._dinhKthucKr];
+                    for(int j = 0; j < dsNhan.Length; j++)
+                    {
+                        if (dsNhan[j] == temp)
+                        {
+                            dsNhan[j] = dsNhan[dsCanh[i]._dinhBdauKr];
+                        }
+                    }
+                    return false;
+                }
+            }
+
+            return true;
+            
+           
 
 
+        }
 
-        #endregion
+    public static void Kruskal(int[,] Dothi)
+    {
+        GtKruskal[] dsCanhKr = new GtKruskal[DataDoThi.n - 1];
+        GtKruskal[] dsCanh = SapXepCanh(DanhSachCanh(DataDoThi.data));
+        int count = 0;
+        int canhMin = 0;
+        while (count < DataDoThi.n - 1 && canhMin < dsCanh.Length)
+        {
+                if (KtChuTrinh(canhMin) == false)
+                {
+                    dsCanhKr[count++] = dsCanh[canhMin];
+                    
+                }
+                canhMin++;
+        }
+        //Xuat ket qua thuat toan Kruskal
+        int trongSoCayKhung = 0;
+        foreach (var item in dsCanhKr)
+        {
+            Console.WriteLine($"{item._dinhBdauKr} - {item._dinhKthucKr}: {item._trongSoKr}");
+            trongSoCayKhung += item._trongSoKr;
+        }
+
     }
+
+
+    #endregion
+}
 }
