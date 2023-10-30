@@ -55,20 +55,21 @@ namespace DoAnLTDT
         public static void Dijkstra(int Dinh_BD)
         {
 
-            Dijkstra_Data.DS_Dinh = Khoi_Tao_Gia_Tri_DS(Dijkstra_Data.DS_Dinh);
+            Dijkstra_Data.DS_Dinh = Khoi_Tao_Gia_Tri_DS(Dijkstra_Data.DS_Dinh, Dinh_BD);
             Dijkstra_Data.Trong_So = Khoi_Tao_Trong_So(Dijkstra_Data.Trong_So);
             Dijkstra_Data.Dinh_Lien_Truoc = Khoi_Tao_Dinh_LTruoc(Dijkstra_Data.Dinh_Lien_Truoc);
             Dijkstra_Data.Trong_So[Dinh_BD] = 0;
             Dijkstra_Data.Dinh_Lien_Truoc[Dinh_BD] = Dinh_BD;
+            int Dem_Dung_While = 0;
             while (Check_Dung(Dijkstra_Data.DS_Dinh) == false)
             {
-               
+                    Dem_Dung_While++;
                     int Dinh_TS_Min = Check_Min_Trong_So();
                 
                     Dijkstra_Data.DS_Dinh[Dinh_TS_Min] = false;
                     Update_Dinh_Ke(Dinh_TS_Min);
 
-                
+                   
 
             }
             MinMap_Dinh(Dinh_BD);
@@ -95,6 +96,7 @@ namespace DoAnLTDT
 
 
         }
+      
         public static void Update_Dinh_Ke(int Dinh)
         {
             for (int i = 0; i < DataDoThi.n; i++)
@@ -124,11 +126,12 @@ namespace DoAnLTDT
             for(int i = 0;i<DataDoThi.n;i++)
             {
                 Console.WriteLine($"Duong di ngan nhat toi {i}");
-                Console.Write("Cost= " + Dijkstra_Data.Trong_So[i] + "   Path="+i);
+                
                 int Dinh_Lien_Truoc = Dijkstra_Data.Dinh_Lien_Truoc[i];
-                if(i!= Dinh_BD)
+                if(i!= Dinh_BD && Dinh_Lien_Truoc != -1)
                 {
-                    while (Dinh_BD != Dinh_Lien_Truoc)
+                    Console.Write("Cost= " + Dijkstra_Data.Trong_So[i] + "   Path=" + i);
+                    while (Dinh_BD != Dinh_Lien_Truoc && Dinh_Lien_Truoc !=-1)
                     {
 
                         Console.Write($"<-{Dinh_Lien_Truoc}");
@@ -136,9 +139,10 @@ namespace DoAnLTDT
                     }
                     Console.WriteLine($"<-{Dinh_BD}");
                 }
-                else
+               
+                if(Dinh_Lien_Truoc==-1)
                 {
-                    Console.WriteLine();
+                    Console.WriteLine("Khong co duong di");
                 }
                 
             }
@@ -166,13 +170,10 @@ namespace DoAnLTDT
             }
             return true;
         }
-        public static Boolean[] Khoi_Tao_Gia_Tri_DS(Boolean[] DS_Dinh)
+        public static Boolean[] Khoi_Tao_Gia_Tri_DS(Boolean[] DS_Dinh,int Dinh_BD)
         {
-            for(int i=0;i<DataDoThi.n;i++)
-            {
-               DS_Dinh[i] = true;
-            }
-            return DS_Dinh;
+           return YC2.DFS(DS_Dinh, Dinh_BD);
+         
         }
         public static int[] Khoi_Tao_Trong_So(int[] Trong_So)
         {
