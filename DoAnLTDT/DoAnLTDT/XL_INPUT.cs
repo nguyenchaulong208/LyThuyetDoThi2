@@ -41,8 +41,9 @@ namespace DoAnLTDT
 
                 }
 
+
+            // ĐƯA GIÁ TRỊ VÀO 2 MẢNG ĐÃ TẠO
             
-        // ĐƯA GIÁ TRỊ VÀO 2 MẢNG ĐÃ TẠO
             if (checkTrongso == false)
             {
                 for (int i = 1; i <= DataDoThi.n; i++)
@@ -82,18 +83,11 @@ namespace DoAnLTDT
 
                 }
             }
-                                 
+
            
-                      return true;
+            return true;
 
         }
-
-
-
-
-      
-
-
 
 
         //Kiem tra do thi co trong so hay khong
