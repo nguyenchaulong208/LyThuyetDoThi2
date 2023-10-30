@@ -10,7 +10,11 @@ namespace DoAnLTDT
     {
         public static void Run_YC4()
         {
-            Console.WriteLine("HIEP DEP TRAI");
+            Console.WriteLine("-------------------------------------------------------------");
+            Console.WriteLine("Yeu cau 4: Tim duong di ngan nhat:");
+            Console.WriteLine("Nhap dinh bat dau");
+            int Dinh_BD = YC2.NhapDinhBatDau();
         }
     }
 }
+

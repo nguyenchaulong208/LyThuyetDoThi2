@@ -27,7 +27,7 @@ namespace DoAnLTDT
         */
         public static void Run_YC3()
         {
-            Console.WriteLine("------------------");
+            Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("YEU CAU 3: Tim cay khung nho nhat.");
             //Kiem tra tinh lien thong
            // kqLienThong();
@@ -244,16 +244,13 @@ namespace DoAnLTDT
                 
                     for (int j = i + 1; j < ds.Length; j++)
                     {
-                        if (ds[i]._trongSoKr > ds[j]._trongSoKr)
-                        {
+                    if (ds[i]._trongSoKr > ds[j]._trongSoKr)
+                    {
 
-                            GtKruskal temp = ds[i];
-                            ds[i] = ds[j];
-                            ds[j] = temp;
-                        }
-
-                    
-                   
+                        GtKruskal temp = ds[i];
+                        ds[i] = ds[j];
+                        ds[j] = temp;
+                    }
                     
                     }
             }

@@ -12,6 +12,7 @@ namespace DoAnLTDT
         //YÊU CẦU 1: PHÂN TÍCH THÔNG TIN ĐỒ THỊ
         public static void Run_YC1()
             {
+                Console.WriteLine("-------------------------------------------------------------");
                 Console.WriteLine("YEU CAU 1: PHAN TICH THONG TIN DO THI:");
                 Console.WriteLine("a. Ma tran ke cua do thi:");
                 Ma_tran_ke();

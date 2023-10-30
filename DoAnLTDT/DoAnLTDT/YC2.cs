@@ -24,7 +24,7 @@ namespace DoAnLTDT
         //DUYET DO THI
         public static void Run_YC2()
         {
-            Console.WriteLine("------------------");
+            Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("YEU CAU 2: DUYET DO THI:");
             
             int Dinh_BD = NhapDinhBatDau();

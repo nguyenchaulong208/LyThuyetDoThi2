@@ -10,6 +10,7 @@ namespace DoAnLTDT
     {
         public static void Run_YC5()
         {
+            Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("HIEP DEP TRAI");
         }
     }
