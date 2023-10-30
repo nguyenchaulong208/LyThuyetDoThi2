@@ -16,8 +16,8 @@ namespace DoAnLTDT
             YC1.Run_YC1();
             YC2.Run_YC2();
             YC3.Run_YC3();
-            YC4.Run_YC4();
-            YC5.Run_YC5();
+            //YC4.Run_YC4();
+            //YC5.Run_YC5();
             //test ket qua
            
            
