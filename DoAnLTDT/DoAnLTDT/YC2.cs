@@ -33,7 +33,9 @@ namespace DoAnLTDT
             Duyet_DFS(Dinh_BD);
             Console.WriteLine($"b. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu rong: ");
             Duyet_BFS(Dinh_BD);
-            Console.WriteLine($"c. Nếu là đồ thị vô hướng, in ra màn hình số lượng thành phần liên thông và danh sách đỉnh): ");
+            Console.WriteLine($"c. Neu la do thi vo huong, in ra man hinh so luong thanh phan lien thong va danh sach): ");
+            Danh_Sach_Lien_Thong_SLuong();
+            Danh_Sach_Lien_Thong_DSach();
 
         }
         public static int NhapDinhBatDau()
@@ -51,7 +53,6 @@ namespace DoAnLTDT
          
             return Dinh_BD;
         }
-
         //DFS - DE QUY
         public static void Duyet_DFS(int dinh)
         {
@@ -63,8 +64,7 @@ namespace DoAnLTDT
             DFS(Visit_Dinh, dinh);
             Console.WriteLine(Duyet_Danh_Sach.DS_DFS);
 
-        }
-       
+        }     
        public static Boolean[] DFS(Boolean[] bools, int Dinh)
         {
             if(Check_Dinh_Ke(bools, Dinh)==false)
@@ -110,16 +110,12 @@ namespace DoAnLTDT
             return true;
 
         }
-
         //BFS
         public static void Duyet_BFS(int dinh)
         {
             Boolean[] Visit_Dinh = new Boolean[DataDoThi.n];
             Duyet_Danh_Sach.DS_BFS = $"{dinh}";
-            for (int i = 0; i < DataDoThi.n; i++)
-            {
-                Visit_Dinh[i] = false;
-            }
+            Reset_Mang(Visit_Dinh);
             Visit_Dinh[dinh] = true;
             BFS(Visit_Dinh, dinh);
             Console.WriteLine(Duyet_Danh_Sach.DS_BFS);
@@ -152,8 +148,6 @@ namespace DoAnLTDT
             return bools;                
         
         }
-
-
         public static Boolean Check_Dinh_Moi(Boolean[] bools)
         {
             for(int i=0;i<DataDoThi.n;i++)
@@ -171,30 +165,59 @@ namespace DoAnLTDT
             }
             return false;
         }
-
         // Tìm thành phần liên thông
-        public static void Danh_Sach_Lien_Thong()
+        public static void Danh_Sach_Lien_Thong_SLuong()
         {
             Boolean[] Visit_Dinh = new Boolean[DataDoThi.n];
-            Boolean[] Visit_Dinh_New = new Boolean[DataDoThi.n];
+            
             int So_Lien_Thong = 0;
             Reset_Mang(Visit_Dinh);
-
-
-
             for (int i = 0;i<DataDoThi.n; ++i)
             {
                 if (Visit_Dinh[i]==false)
                 {
+                    Visit_Dinh[i] = true;
                     So_Lien_Thong++;
                     Visit_Dinh = BFS(Visit_Dinh,i);
-
+                   
 
                 }
+                
             }
-
-
+            Console.WriteLine($"So thanh phan lien thong: {So_Lien_Thong}");
         }
+        public static void Danh_Sach_Lien_Thong_DSach()
+        {
+            Boolean[] Visit_Dinh = new Boolean[DataDoThi.n];
+            Boolean[] Visit_Dinh_DS = new Boolean[DataDoThi.n];          
+            Reset_Mang(Visit_Dinh);
+            Reset_Mang(Visit_Dinh_DS);
+            int dem = 0;
+            for (int i = 0; i < DataDoThi.n; ++i)
+            {
+               
+                if (Visit_Dinh[i] == false)
+                {
+                    
+                    Visit_Dinh[i] = true;
+                    Visit_Dinh = BFS(Visit_Dinh, i);
+                                                   
+
+                    if(Visit_Dinh!= Visit_Dinh_DS)
+                    {
+                        dem++;
+                        Console.WriteLine($"Thanh phan lien thong thu {dem}");
+                        In_Mang(Visit_Dinh, Visit_Dinh_DS);                    
+                    }
+
+                    Khu_Trung_DS(Visit_Dinh, Visit_Dinh_DS);
+                }
+                
+
+            }
+        }
+       
+
         public static Boolean[] Reset_Mang(Boolean[] mang)
         {
 
@@ -205,10 +228,39 @@ namespace DoAnLTDT
             }
             return mang;
         }
-
-        
-
-
+     
+        public static void In_Mang(Boolean[] Mang1, Boolean[] Mang2)
+        {
+            for (int j = 0; j < DataDoThi.n; ++j)
+            {
+                if (Mang1[j] != Mang2[j])
+                {
+                    Console.Write(j + " ");
+                }
+            }
+            Console.WriteLine();
+        }
+        public static Boolean[] Khu_Trung_DS(Boolean[] Mang1, Boolean[] Mang2)
+        {
+            for(int i = 0;i<DataDoThi.n;i++)
+            {
+                if (Mang1[i]==true)
+                {
+                    Mang2[i] = true;
+                }
+            }
+            return Mang2;
+        }
+         public static void In_Mang_bo(Boolean[] Mang)
+        {
+            for (int i = 0; i < DataDoThi.n; i++)
+            {
+               
+                   Console.Write($"{Mang[i]} ");
+                
+            }
+            Console.WriteLine();
+        }
 
     }
 }
