@@ -20,7 +20,7 @@ namespace DoAnLTDT
         public static int[] Prev = new int[DataDoThi.n];
         public static int[,] Cost = new int[DataDoThi.n, DataDoThi.n];
         public static int  Step;
-
+        
     }
     public class YC4
     {
@@ -199,24 +199,11 @@ namespace DoAnLTDT
             Tao_Bellman_Ford_Data(Dinh_BD);
 
 
-            ////Check
+          
 
-            //for (int j = 0; j < DataDoThi.n; j++)
-            //{
-            //    Console.Write(Bellman_Ford_Data.Cost[0, j] + " ");
-            //}
-            //Console.WriteLine();
-            //for (int j = 0; j < DataDoThi.n; j++)
-            //{
-            //    Console.Write(Bellman_Ford_Data.Prev[j] + " ");
-            //}
-            //Console.WriteLine();
-
-            //--------
-           
             while (Bellman_Ford_Data.Step<DataDoThi.n)
             {
-                Update_Old_Data();
+               
                 for (int i=0;i<DataDoThi.n;i++)
                 {
                     if(Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step-1, i]!=int.MaxValue)
@@ -225,22 +212,63 @@ namespace DoAnLTDT
                     }
                 }
 
-                //Check
-
-                for (int j = 0; j < DataDoThi.n; j++)
-                {
-                    Console.Write(Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, j] + " ");
-                }
-                Console.WriteLine();
-                for (int j = 0; j < DataDoThi.n; j++)
-                {
-                    Console.Write(Bellman_Ford_Data.Prev[j] + " ");
-                }
-                Console.WriteLine();
-                
+              
+               
                 Bellman_Ford_Data.Step++;
 
             }
+
+            Console.WriteLine($"Source: {Dinh_BD}");
+            if(Check_Mach_Am()==true)
+            {
+                Console.WriteLine("Do thi co mach am");
+            }
+            In_Bellman_Ford_Data(Dinh_BD);
+
+
+
+        }
+        public static void In_Bellman_Ford_Data(int Dinh_BD)
+        {
+            for(int i=0;i<DataDoThi.n;i++)
+            {
+                Console.WriteLine($"Duong di ngan nhat tu {Dinh_BD} den {i}");
+                Console.Write($"Cost = {Bellman_Ford_Data.Cost[DataDoThi.n - 1, i]}     Path ={i}");
+                int Xe_Do_Duong = Bellman_Ford_Data.Prev[i];
+                while (Xe_Do_Duong!= Dinh_BD)
+                {
+                    Console.Write($" <- {Xe_Do_Duong}");
+                    Xe_Do_Duong= Bellman_Ford_Data.Prev[Xe_Do_Duong];
+                    if(i== Bellman_Ford_Data.Prev[i])
+                    {
+                        break;
+                    }
+                }
+                if(i== Dinh_BD)
+                {
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine($" <- {Dinh_BD}");
+                }
+
+            }
+
+
+        }
+        public static Boolean Check_Mach_Am()
+        {
+           
+            for(int i=0;i<DataDoThi.n;i++)
+            {
+                if (Bellman_Ford_Data.Cost[DataDoThi.n-1,i]!= Bellman_Ford_Data.Cost[DataDoThi.n - 2, i])
+                {
+                    
+                    return true;
+                }
+            }
+            return false;
         }
         public static void Update_Dinh_Step(int Dinh)
         {
@@ -248,52 +276,37 @@ namespace DoAnLTDT
             {
                 if (DataDoThi.data[Dinh, i] != 0)
                 {
-                    if(Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step-1, Dinh]+ DataDoThi.data[Dinh, i]< Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step - 1, i])
+                    if(Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step-1, Dinh]+ DataDoThi.data[Dinh, i]< Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step,i ])
                     {
                         Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, i] = Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step - 1, Dinh] + DataDoThi.data[Dinh, i];
                         Bellman_Ford_Data.Prev[i] = Dinh;
-                    }
-                    //if (Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, i] == int.MaxValue)
-                    //{
-                    //    Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, i] = DataDoThi.data[Dinh, i];
-                    //    Bellman_Ford_Data.Prev[i] = Dinh;
-
-                    //}
-                    //else
-                    //{
-                    //    if (Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, i] > Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step - 1, i] + DataDoThi.data[Dinh, i])
-                    //    {
-                    //        Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, i] = Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step - 1, i] + DataDoThi.data[Dinh, i];
-                    //        Bellman_Ford_Data.Prev[i] = Dinh;
-                    //    }
-                    //}
+                      
+                    }                
 
                 }
             }
+           
         }
-        public static void Update_Old_Data()
-        {
-            for (int i=0; i<DataDoThi.n; i++)
-            {
-                
-                    Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, i] = Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step - 1, i];
-                
-            }
-        }
+      
         public static void Tao_Bellman_Ford_Data(int Dinh_BD)
         {
             for(int i=0; i < DataDoThi.n; i++)
             {
-                if(i== Dinh_BD)
+                for(int j=0;j<DataDoThi.n; j++)
                 {
-                    Bellman_Ford_Data.Cost[0,i]= 0;
+                    if (i == Dinh_BD)
+                    {
+                        Bellman_Ford_Data.Cost[j, i] = 0;
+                    }
+                    else
+                    {
+                        Bellman_Ford_Data.Cost[j, i] = int.MaxValue;
+                    }
                 }
-                else
-                {
-                    Bellman_Ford_Data.Cost[0,i] = int.MaxValue;
-                }
+               
                 Bellman_Ford_Data.Prev[i] = i;
                 Bellman_Ford_Data.Step = 1;
+               
             }
         }
     }
