@@ -233,25 +233,39 @@ namespace DoAnLTDT
             for(int i=0;i<DataDoThi.n;i++)
             {
                 Console.WriteLine($"Duong di ngan nhat tu {Dinh_BD} den {i}");
-                Console.Write($"Cost = {Bellman_Ford_Data.Cost[DataDoThi.n - 1, i]}     Path ={i}");
+                
                 int Xe_Do_Duong = Bellman_Ford_Data.Prev[i];
-                while (Xe_Do_Duong!= Dinh_BD)
+                if (Xe_Do_Duong != i)
                 {
-                    Console.Write($" <- {Xe_Do_Duong}");
-                    Xe_Do_Duong= Bellman_Ford_Data.Prev[Xe_Do_Duong];
-                    if(i== Bellman_Ford_Data.Prev[i])
+                    Console.Write($"Cost = {Bellman_Ford_Data.Cost[DataDoThi.n - 1, i]}     Path ={i}");
+                    while (Xe_Do_Duong != Dinh_BD)
                     {
-                        break;
+                        Console.Write($" <- {Xe_Do_Duong}");
+                        Xe_Do_Duong = Bellman_Ford_Data.Prev[Xe_Do_Duong];
+                        if (i == Bellman_Ford_Data.Prev[i])
+                        {
+                            break;
+                        }
+                        
                     }
-                }
-                if(i== Dinh_BD)
-                {
+
+                    if (i == Dinh_BD)
+                    {
+                        Console.WriteLine();
+                        
+                    }
+                    else
+                    {
+                        Console.Write($" <- {Dinh_BD}");
+                    }
                     Console.WriteLine();
                 }
+                
                 else
                 {
-                    Console.WriteLine($" <- {Dinh_BD}");
+                    Console.Write($"Cost = {0}     Path ={i}");
                 }
+                
 
             }
 
