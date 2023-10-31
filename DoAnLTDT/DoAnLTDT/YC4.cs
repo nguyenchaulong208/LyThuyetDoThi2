@@ -61,39 +61,21 @@ namespace DoAnLTDT
             Dijkstra_Data.Trong_So[Dinh_BD] = 0;
             Dijkstra_Data.Dinh_Lien_Truoc[Dinh_BD] = Dinh_BD;
             int Dem_Dung_While = 0;
+            for (int i = 0; i < Dinh_BD; i++)
+            {
+                Console.WriteLine(Dijkstra_Data.DS_Dinh + " ");
+            }
             while (Check_Dung(Dijkstra_Data.DS_Dinh) == false)
             {
                     Dem_Dung_While++;
                     int Dinh_TS_Min = Check_Min_Trong_So();
                 
                     Dijkstra_Data.DS_Dinh[Dinh_TS_Min] = false;
-                    Update_Dinh_Ke(Dinh_TS_Min);
-
-                   
+                    Update_Dinh_Ke(Dinh_TS_Min);                 
 
             }
+           
             MinMap_Dinh(Dinh_BD);
-
-            ////check
-            //for (int i = 0; i < DataDoThi.n; i++)
-            //{
-            //    Console.Write(i + " ");
-            //}
-            //Console.WriteLine();
-
-            //for (int i = 0; i < DataDoThi.n; i++)
-            //{
-            //    Console.Write(Dijkstra_Data.Trong_So[i] + " ");
-            //}
-            //Console.WriteLine();
-
-            //for (int i = 0; i < DataDoThi.n; i++)
-            //{
-            //    Console.Write(Dijkstra_Data.Dinh_Lien_Truoc[i] + " ");
-            //}
-            //Console.WriteLine();
-
-
 
         }
       
@@ -102,22 +84,23 @@ namespace DoAnLTDT
             for (int i = 0; i < DataDoThi.n; i++)
             {
 
-                if (DataDoThi.data[Dinh, i] != 0 && Dijkstra_Data.Dinh_Lien_Truoc[i] == -1 && Dijkstra_Data.DS_Dinh[i] == true )
+                if(DataDoThi.data[Dinh, i] != 0 && Dijkstra_Data.DS_Dinh[i] == true)
                 {
-                    Dijkstra_Data.Dinh_Lien_Truoc[i] = Dinh;
-                    Dijkstra_Data.Trong_So[i] = DataDoThi.data[Dinh, i]+ Dijkstra_Data.Trong_So[Dijkstra_Data.Dinh_Lien_Truoc[i]];
-                   
-
-                }
-
-                if (DataDoThi.data[Dinh, i] != 0 && Dijkstra_Data.Dinh_Lien_Truoc[i] != -1)
-                {
-                    if (Dijkstra_Data.Trong_So[i] > Dijkstra_Data.Trong_So[Dijkstra_Data.Dinh_Lien_Truoc[i]] + DataDoThi.data[Dinh, i])
+                    if(Dijkstra_Data.Dinh_Lien_Truoc[i] == -1)
                     {
-                        Dijkstra_Data.Trong_So[i] = Dijkstra_Data.Trong_So[Dijkstra_Data.Dinh_Lien_Truoc[i]] + DataDoThi.data[Dinh, i];
                         Dijkstra_Data.Dinh_Lien_Truoc[i] = Dinh;
+                        Dijkstra_Data.Trong_So[i] = DataDoThi.data[Dinh, i] + Dijkstra_Data.Trong_So[Dinh];
+                    }    
+                    else
+                    {
+                        if (Dijkstra_Data.Trong_So[i] > DataDoThi.data[Dinh, i] + Dijkstra_Data.Trong_So[Dinh])
+                        {
+                            Dijkstra_Data.Dinh_Lien_Truoc[i] = Dinh;
+                            Dijkstra_Data.Trong_So[i] = DataDoThi.data[Dinh, i] + Dijkstra_Data.Trong_So[Dinh];
+                        }
                     }
                 }
+                
             }
 
         }
@@ -139,8 +122,12 @@ namespace DoAnLTDT
                     }
                     Console.WriteLine($"<-{Dinh_BD}");
                 }
-               
-                if(Dinh_Lien_Truoc==-1)
+                if(i == Dinh_BD)
+                {
+                    Console.WriteLine($"Cost= {Dijkstra_Data.Trong_So[i]}     Path= {i}");
+                }
+
+                    if (Dinh_Lien_Truoc==-1)
                 {
                     Console.WriteLine("Khong co duong di");
                 }
@@ -159,6 +146,10 @@ namespace DoAnLTDT
                     Min_TS = Dijkstra_Data.Trong_So[i];
                 }
             }
+            if(Dinh_Min==-1)
+            {
+                Dinh_Min = 0;
+            }
             return Dinh_Min;
         }
         public static Boolean Check_Dung(Boolean[] DS_Dinh)
@@ -173,6 +164,7 @@ namespace DoAnLTDT
         public static Boolean[] Khoi_Tao_Gia_Tri_DS(Boolean[] DS_Dinh,int Dinh_BD)
         {
            return YC2.DFS(DS_Dinh, Dinh_BD);
+
          
         }
         public static int[] Khoi_Tao_Trong_So(int[] Trong_So)
