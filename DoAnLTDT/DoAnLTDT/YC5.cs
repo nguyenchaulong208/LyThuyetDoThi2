@@ -1,4 +1,5 @@
-﻿using System;
+using DoAnLTDT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,16 @@ namespace DoAnLTDT
             Console.WriteLine("Yeu cau 5: Tim chu trinh hoac do thi Euler");
             //Kiem tra do thi co phai la do thi Euler hay khong
             Console.WriteLine("Kiem tra do thi Euler");
-            string ktEuler = KtEuler(DataDoThi.data);
-            Console.WriteLine(ktEuler);
+            string result = KtEuler(DataDoThi.data_ke);
+            Console.WriteLine(result);
+            Console.WriteLine("----");
+            //xuat Danhsachcanh
+            Console.WriteLine("Danh sach cac canh trong do thi");
+            DtEuler[] dsCanh = DanhSachCanh(DataDoThi.data_ke);
+            for (int i = 0; i < dsCanh.Length; i++)
+            {
+                Console.WriteLine("Canh thu {0}: ({1},{2})", i + 1, dsCanh[i]._dinhBdauE, dsCanh[i]._dinhKthucE);
+            }
         }
         //Nhap dinh bat dau
         public static int NhapDinh()
@@ -27,28 +36,118 @@ namespace DoAnLTDT
         //Kiem tra do thi co phai la do thi Euler hay khong
         public static string KtEuler(int[,] doThi)
         {
-            int count = 0;
-            string reuslt =string.Empty;
-            for(int i = 0; i < DataDoThi.n; i++)
+
+            int[] arr = new int[DataDoThi.n];
+            string reuslt = string.Empty;
+            for (int i = 0; i < DataDoThi.n; i++)
             {
-                for(int j = 0; j < DataDoThi.n; j++)
+                int count = 0;
+
+                for (int j = 0; j < DataDoThi.n; j++)
                 {
-                    if (doThi[i,j] == 1)
+
+
+                    if (doThi[i, j] == 1)
                     {
+                        count++;
+
+                    }
+
+                }
+                arr[i] = count;
+
+            }
+
+            //Kiem tra do thi euler
+            int dem = 0; int demLe = 0;
+            for (int i = 0; i < DataDoThi.n; i++)
+            {
+                if (arr[i] % 2 == 0)
+                {
+                    dem++;
+                }
+                else
+                {
+                    demLe++;
+                }
+            }
+            if (dem == DataDoThi.n && demLe <= 2)
+            {
+                reuslt = "Do thi Euler";
+
+
+
+            }
+            else
+            {
+                reuslt = "Do thi khong phai la do thi Euler";
+
+            }
+            return reuslt;
+        }
+        //Tao mang chua danh sach cac canh trong do thi
+        public static DtEuler[] DanhSachCanh(int[,] doThi)
+        {
+            DtEuler[] dsCanh = new DtEuler[DataDoThi.n * DataDoThi.n - 1];
+            int count = 0;
+
+            for (int i = 0; i < DataDoThi.n; i++)
+            {
+                for (int j = 0; j < DataDoThi.n; j++)
+                {
+                    if (DataDoThi.data_ke[i, j] != 0)
+                    {
+                        dsCanh[count] = new DtEuler();
+                        dsCanh[count]._dinhBdauE = i;
+                        dsCanh[count]._dinhKthucE = j;
                         count++;
                     }
                 }
             }
-            if (count % 2 == 0) 
+
+
+
+            int countNotNull = 0;
+            for (int i = 0; i < count; i++)
             {
-                reuslt = "Do thi Euler";
+                if (dsCanh[i] != null)
+                {
+                    countNotNull++;
+                }
             }
-            else
+
+            DtEuler[] NewDsCanh = new DtEuler[countNotNull];
+            int count1 = 0;
+            for (int i = 0; i < count; i++)
             {
-                reuslt = "Khong phai do thi Euler";
+                if (dsCanh[i] != null)
+                {
+                    NewDsCanh[count1] = dsCanh[i];
+                    count1++;
+                }
             }
-            return reuslt;
+
+            return NewDsCanh;
         }
-        
+
+
+        //Kiem tra tinh chu trinh trong do thi tai 1 dinh bat ky
+        public static bool KtChuTrinh(int dinh)
+        {
+            DtEuler[] dsCanh = DanhSachCanh(DataDoThi.data_ke);
+            //Kiem tra chu trinh tai dinh trong dsCanh
+            //Tao nhan danh dau cac dinh
+            return true;
+        }
+
+
+        //dUYET DO THI EULER
+        public static void DuyetEuler(int[,] doThi)
+        {
+
+        }
+
+
     }
 }
+
