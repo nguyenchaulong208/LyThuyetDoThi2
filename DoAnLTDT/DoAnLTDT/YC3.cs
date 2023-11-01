@@ -48,7 +48,11 @@ namespace DoAnLTDT
             Console.WriteLine("Thuat toan Kruskal");
            Kruskal(DataDoThi.data);
             Console.WriteLine("---");
+            //Xuat KtChuTrinh
+            Console.WriteLine("Kiem tra chu trinh");
             
+
+
         }
         #region//Kiem tra do thi lien thong
         /*
@@ -298,18 +302,17 @@ namespace DoAnLTDT
             {
                 if (dsCanh[i] != null)
                 {
-                    if (dsCanh[i]._dinhBdauKr == idx && dsCanh[i]._dinhKthucKr == idx)
+                    if (dsCanh[i]._dinhBdauKr == idx || dsCanh[i]._dinhKthucKr == idx)
                     {
 
                         result = true;
-                        break;
                     }
 
                     else
                     {
                         //gan nho hon cho dinh bat dau va lon hon cho dinh ket thuc
                         if (dsNhan[dsCanh[idx]._dinhKthucKr] > dsNhan[i])
-                        {
+                        { 
                             dsNhan[dsCanh[idx]._dinhKthucKr] = dsNhan[i];
                         }
                         else

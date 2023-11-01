@@ -68,4 +68,21 @@ namespace DoAnLTDT
 
     #endregion
 
+    public class DtEuler
+    {
+        private int dinhBdauE;
+        private int dinhKthucE;
+        //contructor
+        public int _dinhBdauE
+        {
+            get { return this.dinhBdauE; }
+            set { dinhBdauE = value; }
+        }
+        public int _dinhKthucE
+        {
+            get { return this.dinhKthucE; }
+            set { dinhKthucE = value; }
+        }
+    }
+
 }
