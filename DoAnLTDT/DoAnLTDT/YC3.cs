@@ -295,44 +295,45 @@ namespace DoAnLTDT
 
         private static bool KtChuTrinh(int idx)
         {
+             
             int[] dsNhan = NhanDinh();
             GtKruskal[] dsCanh = SapXepCanh(DanhSachCanh(DataDoThi.data));
-            bool result = false;
-            for (int i = 0; i < dsNhan.Length; i++)
+            for (int i = 0; i < dsCanh.Length; i++)
             {
-                if (dsCanh[i] != null)
+                int lab1 = 0;
+                int lab2 = 0;
+                for (int j = 0; j < dsNhan.Length;)
                 {
-                    if (dsCanh[i]._dinhBdauKr == idx || dsCanh[i]._dinhKthucKr == idx)
+                    if (dsNhan[dsCanh[idx]._dinhBdauKr] == dsNhan[dsCanh[idx]._dinhKthucKr])
                     {
-
-                        result = true;
+                        return true ;
                     }
-
                     else
                     {
-                        //gan nho hon cho dinh bat dau va lon hon cho dinh ket thuc
-                        if (dsNhan[dsCanh[idx]._dinhKthucKr] > dsNhan[i])
-                        { 
-                            dsNhan[dsCanh[idx]._dinhKthucKr] = dsNhan[i];
-                        }
-                        else
+                        lab1 = Math.Min(dsNhan[dsCanh[idx]._dinhBdauKr], dsNhan[dsCanh[idx]._dinhKthucKr]);
+                        lab2 = Math.Max(dsNhan[dsCanh[idx]._dinhBdauKr], dsNhan[dsCanh[idx]._dinhKthucKr]);
+                        //if (dsNhan[dsCanh[idx]._dinhBdauKr] < dsNhan[dsCanh[idx]._dinhKthucKr])
+                        //{
+                        //    lab1 = dsNhan[dsCanh[idx]._dinhBdauKr];
+                        //    lab2 = dsNhan[dsCanh[idx]._dinhKthucKr];
+                        //}
+                        //else
+                        //{
+                        //    lab1 = dsNhan[dsCanh[idx]._dinhKthucKr];
+                        //    lab2 = dsNhan[dsCanh[idx]._dinhBdauKr];
+                        //}
+                        for (int k = 0; k < dsNhan.Length; k++)
                         {
-                            dsNhan[i] = dsNhan[dsCanh[i]._dinhKthucKr];
-
-                            for (int j = 0; j < dsNhan.Length; j++)
+                            if (dsNhan[k] == lab2)
                             {
-                                if (dsNhan[j] == dsNhan[dsCanh[i]._dinhKthucKr])
-                                {
-                                    dsNhan[j] = dsNhan[i];
-                                }
+                                dsNhan[k] = lab1;
                             }
-                            result = false;
                         }
-
+                        
                     }
                 }
             }
-            return result;
+            return false;
         }
 
         public static void Kruskal(int[,] Dothi)
@@ -341,20 +342,14 @@ namespace DoAnLTDT
             GtKruskal[] dsCanh = SapXepCanh(DanhSachCanh(DataDoThi.data));
             int count = 0;
             int canhMin = 0;
-            int canhMax = 0;
-            foreach(var item in dsCanh)
-            {
-                
-                    canhMax++;
-                
-            }
             
-            int[] dsNhan = NhanDinh();
+           
+
 
             while (count < dsCanhKr.Length)
                 
             {
-                if (canhMin < canhMax)
+                if (canhMin < dsCanh.Length)
                 {
                     if (KtChuTrinh(canhMin) == false)
                     {
@@ -363,10 +358,7 @@ namespace DoAnLTDT
                     }
                     canhMin++;
                 }
-                else
-                {
-                    break;
-                }
+                
                
                 
             }
