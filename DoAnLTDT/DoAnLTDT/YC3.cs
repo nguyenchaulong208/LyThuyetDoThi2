@@ -32,7 +32,7 @@ namespace DoAnLTDT
             //Kiem tra tinh lien thong
            // kqLienThong();
             //Chay thuat toan Prim
-            var checkDoThi = YC1.Vector();
+            //var checkDoThi = YC1.Vector();
             var checkLienThong = kqLienThong();
             if(checkDoThi == true && checkLienThong == true)
             {
@@ -59,7 +59,7 @@ namespace DoAnLTDT
 
 
         }
-        #region//Kiem tra do thi lien thong
+        #region//Kiem tra do thi lien thong va do thi vo huong
         /*
          * Method LienThong(): Xu ly kiem tra do thi lien thong:
          *  - Dung thuat toan DFS de kiem tra tinh lien thong cua do thi
@@ -72,7 +72,7 @@ namespace DoAnLTDT
          * */
         public static bool LienThong()
         {
-           var checkVoHuong = YC1.Vector();
+           var checkVoHuong = KtDoThi();
             if(checkVoHuong == true)
             {
                 
@@ -119,6 +119,26 @@ namespace DoAnLTDT
             }
             return result;
         }
+        //Kiem tra do thi vo huong
+        public static Boolean KtDoThi()
+        {
+            
+       
+            for(int i=0;i<=n;i++)
+            {
+                for(int j=1;j<=n;j++)
+                {
+                    if (data_ke[i,j] != data_ke[j,i])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+                 
+        }
+    }
+        
         #endregion
         #region// Thuat toan Prim
         public static void Prime(int[,] doThi, int dinhBdau)
