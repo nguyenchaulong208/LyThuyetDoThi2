@@ -30,11 +30,11 @@ namespace DoAnLTDT
             Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("YEU CAU 3: Tim cay khung nho nhat.");
             //Kiem tra tinh lien thong
-           // kqLienThong();
+            // kqLienThong();
             //Chay thuat toan Prim
-            //var checkDoThi = YC1.Vector();
+            var checkVoHuong = KtDoThi(DataDoThi.data_ke);
             var checkLienThong = kqLienThong();
-            if(checkDoThi == true && checkLienThong == true)
+            if(checkLienThong == true && checkVoHuong == true)
             {
                 Console.WriteLine("Thuat toan Prime");
                 Prime(DataDoThi.data, 0);
@@ -72,10 +72,8 @@ namespace DoAnLTDT
          * */
         public static bool LienThong()
         {
-           var checkVoHuong = KtDoThi();
-            if(checkVoHuong == true)
-            {
-                
+          
+                           
                 bool[] checkLienThong = new bool[DataDoThi.n];
                 for(int i = 0; i < DataDoThi.n; i++)
                 {
@@ -101,7 +99,7 @@ namespace DoAnLTDT
                     }
                 }
                 
-            }
+            
             return true;
         }
         //Lien thong
@@ -120,24 +118,24 @@ namespace DoAnLTDT
             return result;
         }
         //Kiem tra do thi vo huong
-        public static Boolean KtDoThi()
+        public static Boolean KtDoThi(int[,] doThi)
         {
-            
-       
-            for(int i=0;i<=n;i++)
+
+
+            for(int i = 0; i < DataDoThi.n; i++)
             {
-                for(int j=1;j<=n;j++)
+                for (int j = 1; j < DataDoThi.n; j++)
                 {
-                    if (data_ke[i,j] != data_ke[j,i])
+                    if (DataDoThi.data_ke[i, j] != DataDoThi.data_ke[j, i])
                     {
                         return false;
                     }
                 }
             }
             return true;
-                 
+
         }
-    }
+    
         
         #endregion
         #region// Thuat toan Prim
