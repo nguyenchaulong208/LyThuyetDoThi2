@@ -40,7 +40,6 @@ namespace DoAnLTDT
                 Console.WriteLine("---");
                 Console.WriteLine("Thuat toan Kruskal");
                 Kruskal(DataDoThi.data);
-                Console.WriteLine("---");
             }
             else
             {

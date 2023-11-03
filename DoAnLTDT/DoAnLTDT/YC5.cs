@@ -59,7 +59,7 @@ namespace DoAnLTDT
             }
 
             //Kiem tra do thi euler
-            int dem = 0; int demLe = 0;
+            int dem = 0; int demLe = 1;
             for (int i = 0; i < DataDoThi.n; i++)
             {
                 if (arr[i] % 2 == 0)
@@ -71,18 +71,20 @@ namespace DoAnLTDT
                     demLe++;
                 }
             }
-            if (dem == DataDoThi.n && demLe <= 2)
+            if(dem ==DataDoThi.n)
             {
                 reuslt = "Do thi Euler";
-
-
-
+                
+            }
+            else if (demLe <= 2)
+            {
+                reuslt = "Do thi nua Euler";
             }
             else
             {
                 reuslt = "Do thi khong phai la do thi Euler";
-
             }
+
             return reuslt;
         }
         //Tao mang chua danh sach cac canh trong do thi
