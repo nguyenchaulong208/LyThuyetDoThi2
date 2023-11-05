@@ -146,6 +146,8 @@ namespace DoAnLTDT
         //dUYET DO THI EULER
         public static void DuyetEuler(int[,] doThi)
         {
+            //Tao 1 mang danh dau cac canh tao thanh chu trinh
+            int[] arr = new int[DataDoThi.n * DataDoThi.n - 1];
 
         }
 
