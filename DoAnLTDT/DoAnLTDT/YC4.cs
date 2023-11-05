@@ -218,12 +218,14 @@ namespace DoAnLTDT
 
             }
 
+
             Console.WriteLine($"Source: {Dinh_BD}");
             if(Check_Mach_Am()==true)
             {
                 Console.WriteLine("Do thi co mach am");
             }
-            In_Bellman_Ford_Data(Dinh_BD);
+            
+           // In_Bellman_Ford_Data(Dinh_BD);
 
 
 
@@ -232,11 +234,12 @@ namespace DoAnLTDT
         {
             for(int i=0;i<DataDoThi.n;i++)
             {
-                Console.WriteLine($"Duong di ngan nhat tu {Dinh_BD} den {i}");
+                
                 
                 int Xe_Do_Duong = Bellman_Ford_Data.Prev[i];
                 if (Xe_Do_Duong != i)
                 {
+                    Console.WriteLine($"Duong di ngan nhat tu {Dinh_BD} den {i}");
                     Console.Write($"Cost = {Bellman_Ford_Data.Cost[DataDoThi.n - 1, i]}     Path ={i}");
                     while (Xe_Do_Duong != Dinh_BD)
                     {
@@ -254,7 +257,7 @@ namespace DoAnLTDT
 
                     if (i == Dinh_BD)
                     {
-                        Console.WriteLine();
+                      //  Console.WriteLine();
                         
                     }
                     else
@@ -263,12 +266,7 @@ namespace DoAnLTDT
                     }
                     Console.WriteLine();
                 }
-                
-                else
-                {
-                    Console.Write($"Cost = {0}     Path ={i}");
-                    Console.WriteLine();
-                }
+             
                 
 
             }
@@ -298,14 +296,25 @@ namespace DoAnLTDT
                     {
                         Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step, i] = Bellman_Ford_Data.Cost[Bellman_Ford_Data.Step - 1, Dinh] + DataDoThi.data[Dinh, i];
                         Bellman_Ford_Data.Prev[i] = Dinh;
-                      
+                       
                     }                
 
                 }
             }
-           
+            //Check
+            for (int j = 0; j < DataDoThi.n; j++)
+            {
+                Console.Write(Bellman_Ford_Data.Cost[0, j] + " ");
+            }
+            Console.WriteLine();
+            for (int j = 0; j < DataDoThi.n; j++)
+            {
+                Console.Write(Bellman_Ford_Data.Prev[j] + " ");
+            }
+            Console.WriteLine();
+
         }
-      
+
         public static void Tao_Bellman_Ford_Data(int Dinh_BD)
         {
             for(int i=0; i < DataDoThi.n; i++)

@@ -14,25 +14,94 @@ namespace DoAnLTDT
             Console.WriteLine("-------------------------------------------------------------");
             Console.WriteLine("Yeu cau 5: Tim chu trinh hoac do thi Euler");
             //Kiem tra do thi co phai la do thi Euler hay khong
-            Console.WriteLine("Kiem tra do thi Euler");
-            string result = KtEuler(DataDoThi.data_ke);
-            Console.WriteLine(result);
-            Console.WriteLine("----");
-            //xuat Danhsachcanh
-            Console.WriteLine("Danh sach cac canh trong do thi");
-            DtEuler[] dsCanh = DanhSachCanh(DataDoThi.data_ke);
-            for (int i = 0; i < dsCanh.Length; i++)
-            {
-                Console.WriteLine("Canh thu {0}: ({1},{2})", i + 1, dsCanh[i]._dinhBdauE, dsCanh[i]._dinhKthucE);
-            }
+            int Dinh_BD = YC2.NhapDinhBatDau();
+            Kiem_Tra_Tinh_Chat_DT( Dinh_BD);
+
+
         }
-        //Nhap dinh bat dau
-        public static int NhapDinh()
+
+
+        // YC 5a
+        public static void Kiem_Tra_Tinh_Chat_DT(int Dinh_BD)
         {
-            Console.Write("Nhap dinh bat dau:");
-            int Dinh = int.Parse(Console.ReadLine());
-            return Dinh;
+            if (KT_Don_Do_Thi() == true)
+            {
+                Console.WriteLine(KtEuler(DataDoThi.data_ke));
+            }
+            else
+            {
+                Console.WriteLine("Khong phai don do thi");
+            }
+
         }
+
+        // XET DON DO THI
+        public static Boolean KT_Don_Do_Thi()
+        {
+
+
+            int[] KQ = new int[2];
+            KQ[0] = 0;
+            KQ[1] = 0;
+            int dem = 0;
+
+            if (YC1.Vector() == true)
+            {
+                for (int i = 0; i < DataDoThi.n; i++)
+                {
+                    for (int j = dem; j < DataDoThi.n; j++)
+                    {
+                        if (DataDoThi.data_ke[i, j] == 2)
+                        {
+                            KQ[0] += 1;
+                        }
+                        if (DataDoThi.data_ke[i, j] != 0 && i == j)
+                        {
+                            KQ[1] += DataDoThi.data_ke[i, j];
+                        }
+                    }
+                    dem += 1;
+                }
+
+
+
+            }
+
+            else
+            {
+                for (int i = 0; i < DataDoThi.n; i++)
+                {
+                    for (int j = 0; j < DataDoThi.n; j++)
+                    {
+                        if (DataDoThi.data_ke[i, j] == 2)
+                        {
+                            KQ[0] += 1;
+                        }
+                        if (DataDoThi.data_ke[i, j] != 0 && i == j)
+                        {
+                            KQ[1] += DataDoThi.data_ke[i, j];
+                        }
+                    }
+                }
+
+            }
+            if (KQ[0] == 0 && KQ[1] == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+        //KIEM TRA DT LA EULER HAY BAN EULER HAY KHONG PHAI
+        
+
+
+
+
         //Kiem tra do thi co phai la do thi Euler hay khong
         public static string KtEuler(int[,] doThi)
         {
@@ -71,10 +140,10 @@ namespace DoAnLTDT
                     demLe++;
                 }
             }
-            if(dem ==DataDoThi.n)
+            if (dem == DataDoThi.n)
             {
                 reuslt = "Do thi Euler";
-                
+
             }
             else if (demLe <= 2)
             {
@@ -151,7 +220,7 @@ namespace DoAnLTDT
 
         }
 
-
     }
+    
 }
 
