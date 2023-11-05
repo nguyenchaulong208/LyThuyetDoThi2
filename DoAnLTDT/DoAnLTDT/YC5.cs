@@ -96,12 +96,6 @@ namespace DoAnLTDT
 
 
         }
-        //KIEM TRA DT LA EULER HAY BAN EULER HAY KHONG PHAI
-        
-
-
-
-
         //Kiem tra do thi co phai la do thi Euler hay khong
         public static string KtEuler(int[,] doThi)
         {
