@@ -244,10 +244,13 @@ namespace DoAnLTDT
                         Xe_Do_Duong = Bellman_Ford_Data.Prev[Xe_Do_Duong];
                         if (i == Bellman_Ford_Data.Prev[i])
                         {
+                          
                             break;
+
                         }
                         
                     }
+                   
 
                     if (i == Dinh_BD)
                     {
@@ -264,6 +267,7 @@ namespace DoAnLTDT
                 else
                 {
                     Console.Write($"Cost = {0}     Path ={i}");
+                    Console.WriteLine();
                 }
                 
 
