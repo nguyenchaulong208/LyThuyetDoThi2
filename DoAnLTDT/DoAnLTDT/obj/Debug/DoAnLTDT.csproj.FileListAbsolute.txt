@@ -19,3 +19,31 @@ D:\git_project\LyThuyetDoThi\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.Assembl
 D:\git_project\LyThuyetDoThi\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
 D:\git_project\LyThuyetDoThi\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
 D:\git_project\LyThuyetDoThi\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe.config
+D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe
+D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.pdb
+D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.AssemblyReference.cache
+D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
+D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
+D:\git_project\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe.config
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.pdb
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.AssemblyReference.cache
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
+G:\GITHUB UPLOAD\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe.config
+E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe
+E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.pdb
+E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.AssemblyReference.cache
+E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
+E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
+E:\HIEP\Git_Hub\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.AssemblyReference.cache
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.csproj.CoreCompileInputs.cache
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.exe
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\obj\Debug\DoAnLTDT.pdb
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe.config
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.exe
+E:\Git Data\LyThuyetDoThi2\DoAnLTDT\DoAnLTDT\bin\Debug\DoAnLTDT.pdb
