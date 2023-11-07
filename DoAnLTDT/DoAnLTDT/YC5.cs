@@ -1,4 +1,4 @@
-using DoAnLTDT;
+﻿using DoAnLTDT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,15 @@ namespace DoAnLTDT
 
 
         }
-
+        /*Note
+         * Cac ham su dung trong YC5:
+         * Kiem_Tra_Tinh_Chat_DT(int Dinh_BD) và KT_Don_Do_Thi(): dung de kiem tra xem co phai la don do thi hay khong
+         * KtEuler(int[,] doThi): dung de kiem tra do thi co phai la do thi Euler hay khong
+         * ---
+         * Mang_Canh(int[,] doThi): tao danh sach luu cac canh cua do thi
+         * KtChuTrinh(DtEuler idx, int[] dsNhan): kiem tra xem co tao chu trinh hay khong
+         * Euler(int[,] doThi): tim chu trinh hoac duong đi Euler
+         */
 
         // YC 5a
         public static void Kiem_Tra_Tinh_Chat_DT(int Dinh_BD)
@@ -150,17 +158,19 @@ namespace DoAnLTDT
 
             return reuslt;
         }
-        //Tao mang chua danh sach cac canh trong do thi
-        public static DtEuler[] DanhSachCanh(int[,] doThi)
+       
+        #region //Thuat toan tim chu trinh hoac do thi Euler
+        //Thuat toan tim chu trinh hoac do thi Euler
+        //Tao mang luu cac canh cua do thi
+        public static DtEuler[] Mang_Canh(int[,] doThi)
         {
-            DtEuler[] dsCanh = new DtEuler[DataDoThi.n * DataDoThi.n - 1];
             int count = 0;
-
+            DtEuler[] dsCanh = new DtEuler[DataDoThi.n * (DataDoThi.n - 1)];
             for (int i = 0; i < DataDoThi.n; i++)
             {
                 for (int j = 0; j < DataDoThi.n; j++)
                 {
-                    if (DataDoThi.data_ke[i, j] != 0)
+                    if (doThi[i, j] != 0)
                     {
                         dsCanh[count] = new DtEuler();
                         dsCanh[count]._dinhBdauE = i;
@@ -170,51 +180,73 @@ namespace DoAnLTDT
                 }
             }
 
-
-
-            int countNotNull = 0;
-            for (int i = 0; i < count; i++)
+            // Loại bỏ các cạnh null
+            List<DtEuler> nonNullEdges = new List<DtEuler>();
+            for (int i = 0; i < dsCanh.Length; i++)
             {
                 if (dsCanh[i] != null)
                 {
-                    countNotNull++;
+                    nonNullEdges.Add(dsCanh[i]);
                 }
             }
 
-            DtEuler[] NewDsCanh = new DtEuler[countNotNull];
-            int count1 = 0;
-            for (int i = 0; i < count; i++)
+            // Chuyển danh sách cạnh không null thành mảng và trả về
+            return nonNullEdges.ToArray();
+        }
+        public static bool KtChuTrinh(DtEuler idx, int[] dsNhan)
+        {
+            int nhanBdau = dsNhan[idx._dinhBdauE];
+            int nhanKthuc = dsNhan[idx._dinhKthucE];
+
+            if (nhanBdau == nhanKthuc)
+                return true; // Nếu cả hai đỉnh của cạnh đã thuộc cùng một nhóm, tức là sẽ tạo chu trình
+
+            int nhanNhoNhat = Math.Min(nhanBdau, nhanKthuc);
+            int nhanLonNhat = Math.Max(nhanBdau, nhanKthuc);
+
+            for (int i = 0; i < dsNhan.Length; i++)
             {
-                if (dsCanh[i] != null)
-                {
-                    NewDsCanh[count1] = dsCanh[i];
-                    count1++;
-                }
+                if (dsNhan[i] == nhanLonNhat)
+                    dsNhan[i] = nhanNhoNhat; // Gán nhãn nhỏ hơn cho tất cả các đỉnh có nhãn lớn hơn
             }
 
-            return NewDsCanh;
+            return false; // Không tạo chu trình
         }
-
-
-        //Kiem tra tinh chu trinh trong do thi tai 1 dinh bat ky
-        public static bool KtChuTrinh(int dinh)
+        //Thuat toan tim chu trinh hoac do thi Euler
+        public static void Euler(int[,] doThi)
         {
-            DtEuler[] dsCanh = DanhSachCanh(DataDoThi.data_ke);
-            //Kiem tra chu trinh tai dinh trong dsCanh
-            //Tao nhan danh dau cac dinh
-            return true;
+            //int canh = 0;
+            //Tao danh sach luu cac canh
+            List<DtEuler> dsCanh = new List<DtEuler>();
+            dsCanh = Mang_Canh(doThi).ToList();
+            //tao danh sach luu cac canh cua chu trinh hoac do thi Euler
+            List<DtEuler> dsCanhEuler = new List<DtEuler>();
+            //Tim chu trinh hoac do thi Euler
+            int[] dsNhan = new int[DataDoThi.n];
+            for (int i = 0; i < dsNhan.Length; i++)
+            {
+                dsNhan[i] = i;
+            }
+            while (dsCanh.Count > 0)
+            {
+                DtEuler idx = dsCanh[0];
+                dsCanh.RemoveAt(0);
+                if (KtChuTrinh(idx, dsNhan) == true)
+                {
+                    dsCanhEuler.Add(idx);
+                }
+
+            }
+
+            foreach (DtEuler item in dsCanhEuler)
+            {
+                Console.WriteLine(item._dinhBdauE + " " + item._dinhKthucE);
+            }
+
         }
-
-
-        //dUYET DO THI EULER
-        public static void DuyetEuler(int[,] doThi)
-        {
-            //Tao 1 mang danh dau cac canh tao thanh chu trinh
-            int[] arr = new int[DataDoThi.n * DataDoThi.n - 1];
-
-        }
+        #endregion
 
     }
-    
+
 }
 

@@ -31,6 +31,7 @@ namespace DoAnLTDT
             Console.WriteLine($"Source {Dinh_BD}");
             Console.WriteLine($"a. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu sau: ");
             Duyet_DFS(Dinh_BD);
+            Console.WriteLine(Duyet_Danh_Sach.DS_DFS);
             Console.WriteLine($"b. Danh sach cac dinh vieng tham theo giai thuat duyet theo chieu rong: ");
             Duyet_BFS(Dinh_BD);
             Console.WriteLine($"c. Neu la do thi vo huong, in ra man hinh so luong thanh phan lien thong va danh sach): ");
@@ -62,7 +63,7 @@ namespace DoAnLTDT
             Reset_Mang(Visit_Dinh);
             Visit_Dinh[dinh] = true;
             DFS(Visit_Dinh, dinh);
-            Console.WriteLine(Duyet_Danh_Sach.DS_DFS);
+            
 
         }     
        public static Boolean[] DFS(Boolean[] bools, int Dinh)
